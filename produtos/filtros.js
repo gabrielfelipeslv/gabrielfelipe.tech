@@ -1,4 +1,4 @@
-// Filtros da página de iPhone: os cartões já vêm no HTML; aqui só escondemos, mostramos e ordenamos.
+// Filtros de /produtos/ e /iphone/: os cartões já vêm no HTML; aqui só escondemos, mostramos e ordenamos.
 (function () {
   var grade = document.getElementById('grade');
   var cartoes = Array.prototype.slice.call(grade.querySelectorAll('.cartao'));
@@ -8,7 +8,7 @@
   var tetoValor = document.getElementById('teto-valor');
   var contagem = document.getElementById('contagem');
   var vazio = document.getElementById('vazio');
-  var estado = { categoria: '', condicao: '', memoria: '', pronta: '' };
+  var estado = { marca: '', categoria: '', condicao: '', memoria: '', pronta: '' };
   var brl = function (v) { return Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
   var semAcento = function (s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); };
 
@@ -24,8 +24,9 @@
         o.hidden = !ok;
         if (ok) algumaOferta = true;
       });
-      var texto = semAcento(c.querySelector('h3').textContent + ' ' + c.dataset.categoria + (c.dataset.categoria === 'mac' ? ' macbook' : ''));
+      var texto = semAcento(c.querySelector('h3').textContent + ' ' + (c.dataset.marca || '') + ' ' + c.dataset.categoria);
       var ok = algumaOferta
+        && (!estado.marca || c.dataset.marca === estado.marca)
         && (!estado.categoria || c.dataset.categoria === estado.categoria)
         && (!estado.memoria || c.dataset.memoria === estado.memoria)
         && (!estado.pronta || c.dataset.pronta === '1')
@@ -67,6 +68,12 @@
   ordem.addEventListener('change', ordenar);
 
   // ?q=15 pro max na URL já abre filtrado (útil para mandar o link de um modelo).
-  try { var q = new URLSearchParams(location.search).get('q'); if (q) busca.value = q; } catch (e) {}
+  // ?marca=Xiaomi abre já na marca (link direto para mandar a alguém).
+  try {
+    var p = new URLSearchParams(location.search);
+    var q = p.get('q'); if (q) busca.value = q;
+    var m = p.get('marca'); var bm = m && document.querySelector('.chip[data-filtro="marca"][data-valor="' + m.replace(/"/g, '') + '"]');
+    if (bm) bm.click();
+  } catch (e) {}
   aplicar(); ordenar();
 })();

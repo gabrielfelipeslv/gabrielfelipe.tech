@@ -6,4 +6,12 @@
     <image:image><image:loc>https://gabrielfelipe.tech/assets/gabriel-retrato.jpg</image:loc></image:image>
     <image:image><image:loc>https://gabrielfelipe.tech/assets/compartilhar.jpg</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://gabrielfelipe.tech/produtos/</loc>
+    <lastmod>2026-11-22</lastmod>
+  </url>
+  <url>
+    <loc>https://gabrielfelipe.tech/iphone/</loc>
+    <lastmod>2026-11-22</lastmod>
+  </url>
 </urlset>
