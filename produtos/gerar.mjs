@@ -20,7 +20,7 @@ const parcela12 = (v) => brl(Math.round(v * 10) / 100);
 const slug = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const geracao = (m) => { if (/XR/.test(m)) return 10; if (/Duo/.test(m)) return 19; const n = m.match(/(\d+)/); return n ? Number(n[1]) : 0; };
 const ordemMem = (m) => ({ '64 GB': 0, '128 GB': 1, '256 GB': 2, '512 GB': 3, '1 TB': 4, '2 TB': 5 }[m] ?? 9);
-const ESTADO = { lacrado: 'Novo', cpo: 'Novo CPO', seminovo: 'Seminovo' };
+const ESTADO = { lacrado: 'Novo', seminovo: 'Seminovo' };
 const zap = (texto) => `https://wa.me/${dados.whatsapp}?text=${encodeURIComponent(texto)}`;
 const dataBr = dados.atualizadoEm.split('-').reverse().join('/');
 
@@ -35,10 +35,13 @@ function precoBloco(o) {
 function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   const url = SITE + caminho;
   const grupos = new Map();
-  for (const it of itens) {
+  for (const original of itens) {
+    const it = original.condicao === 'cpo' ? { ...original, condicao: 'lacrado' } : original;
     const chave = [it.marca, it.modelo, it.memoria, it.ram || ''].join('|');
     if (!grupos.has(chave)) grupos.set(chave, { ...it, ofertas: {} });
-    grupos.get(chave).ofertas[it.condicao] = it;
+    const g = grupos.get(chave); const ja = g.ofertas[it.condicao];
+    if (!ja) g.ofertas[it.condicao] = it;
+    else g.ofertas[it.condicao] = { ...(it.preco < ja.preco ? it : ja), aPartir: true, preco: Math.min(it.preco, ja.preco) };
   }
   const ordemMarca = (m) => (m === 'Apple' ? 0 : 1);
   const lista = [...grupos.values()].sort((a, b) => ordemMarca(a.marca) - ordemMarca(b.marca) || a.marca.localeCompare(b.marca)
@@ -46,7 +49,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     || a.modelo.localeCompare(b.modelo) || ordemMem(a.memoria) - ordemMem(b.memoria));
 
   const cartoes = lista.map((g) => {
-    const ofertas = ['lacrado', 'cpo', 'seminovo'].map((c) => g.ofertas[c]).filter(Boolean);
+    const ofertas = ['lacrado', 'seminovo'].map((c) => g.ofertas[c]).filter(Boolean);
     const nome = `${g.modelo} ${g.memoria}${g.ram ? ` · ${g.ram} RAM` : ''}`;
     const menor = Math.min(...ofertas.map((o) => o.preco));
     const pronta = ofertas.some((o) => o.pronta);
@@ -66,11 +69,10 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
 
   const conta = (m) => itens.filter((i) => i.marca === m).length;
   const marcas = [...new Set(itens.map((i) => i.marca))].sort((a, b) => ordemMarca(a) - ordemMarca(b) || conta(b) - conta(a));
-  const estados = ['lacrado', 'cpo', 'seminovo'].filter((c) => itens.some((i) => i.condicao === c));
+  const estados = ['lacrado', 'seminovo'].filter((c) => itens.some((i) => (i.condicao === 'cpo' ? 'lacrado' : i.condicao) === c));
   const memorias = [...new Set(itens.map((i) => i.memoria))].sort((a, b) => ordemMem(a) - ordemMem(b));
   const temSeminovo = estados.includes('seminovo');
-  const temCpo = estados.includes('cpo');
-  const temPronta = itens.some((i) => i.pronta);
+    const temPronta = itens.some((i) => i.pronta);
   const seg = (filtro, rotulo, opcoes) => `<div class="segmento" role="group" aria-label="${rotulo}">
         ${opcoes.map(([v, t], i) => `<button type="button" data-filtro="${filtro}" data-valor="${esc(v)}" aria-pressed="${i === 0}">${esc(t)}</button>`).join('')}
       </div>`;
@@ -84,7 +86,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
         url: `${url}#${slug(`${g.marca} ${g.modelo} ${g.memoria}${g.ram ? ` · ${g.ram} RAM` : ''}`)}`,
         offers: Object.values(g.ofertas).map((o) => ({
           '@type': 'Offer', price: o.preco.toFixed(2), priceCurrency: 'BRL',
-          itemCondition: o.condicao === 'lacrado' ? 'https://schema.org/NewCondition' : o.condicao === 'cpo' ? 'https://schema.org/RefurbishedCondition' : 'https://schema.org/UsedCondition',
+          itemCondition: o.condicao === 'lacrado' ? 'https://schema.org/NewCondition' : 'https://schema.org/UsedCondition',
           availability: 'https://schema.org/InStock', seller: { '@type': 'Person', name: 'Gabriel Felipe' },
         })),
       },
@@ -119,6 +121,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     --fonte: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Inter, Arial, sans-serif;
   }
   *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { -webkit-text-size-adjust: 100%; }
   body { margin: 0; font: 400 17px/1.47 var(--fonte); letter-spacing: -.022em; color: var(--texto); background: var(--fundo); -webkit-font-smoothing: antialiased; }
   a { color: var(--azul); text-decoration: none; }
@@ -242,7 +245,6 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   <div class="largura">
     <div><h2>Até 18x no cartão</h2><p>À vista no Pix ou em 12x com parcela de um décimo do valor. Também parcelo em até 18x.</p></div>
     ${temSeminovo ? `<div><h2>Seminovos revisados</h2><p>Bateria em torno de ${dados.bateriaSeminovo}%. A letra ao lado é a nota de conservação: A+ é a melhor.</p></div>` : ''}
-    ${temCpo ? '<div><h2>Novo CPO</h2><p>Recondicionado pela própria Apple e vendido lacrado, com preço menor que o novo.</p></div>' : ''}
     <div><h2>Compra pelo WhatsApp</h2><p>Toque em Comprar, escolha a cor e combine a entrega comigo.</p></div>
   </div>
 </section>
@@ -328,7 +330,7 @@ const paginas = [
     titulo: 'iPhone novo e seminovo: preços atualizados | Gabriel Felipe',
     h1: 'iPhone. <span>Novo e seminovo.</span>',
     sub: 'Do iPhone 11 ao iPhone 18 Pro Max e iPhone Duo. Em até 18x no cartão.',
-    descricao: `Preços de iPhone novo, novo CPO e seminovo (bateria em torno de ${dados.bateriaSeminovo}%), a partir de ${menor(apple)}, em 12x ou até 18x. Escolha o modelo e a memória e compre pelo WhatsApp.`,
+    descricao: `Preços de iPhone novo e seminovo (bateria em torno de ${dados.bateriaSeminovo}%), a partir de ${menor(apple)}, em 12x ou até 18x. Escolha o modelo e a memória e compre pelo WhatsApp.`,
   },
 ];
 for (const p of paginas) {
