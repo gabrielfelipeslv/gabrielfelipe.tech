@@ -23,6 +23,9 @@ const ordemMem = (m) => ({ '64 GB': 0, '128 GB': 1, '256 GB': 2, '512 GB': 3, '1
 const ESTADO = { lacrado: 'Novo', seminovo: 'Seminovo' };
 const zap = (texto) => `https://wa.me/${dados.whatsapp}?text=${encodeURIComponent(texto)}`;
 const dataBr = dados.atualizadoEm.split('-').reverse().join('/');
+// Foto oficial do fabricante em produtos/fotos/<modelo>.webp (iPhone: loja da Apple; Xiaomi/Poco: mi.com). Sem foto, sem imagem.
+const FOTOS = new Set(fs.readdirSync(path.join(raiz, 'produtos', 'fotos')).filter((f) => f.endsWith('.webp')).map((f) => f.replace(/.webp$/, '')));
+const foto = (modelo) => { const s = slug(modelo); return FOTOS.has(s) ? `/produtos/fotos/${s}.webp` : null; };
 
 function precoBloco(o) {
   return `<div class="valor" data-condicao="${o.condicao}" data-preco="${o.preco}">
@@ -56,6 +59,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     return `
       <article class="cartao" id="${slug(`${g.marca} ${nome}`)}" data-marca="${esc(g.marca)}" data-memoria="${g.memoria}"
         data-geracao="${geracao(g.modelo)}" data-menor="${menor}" data-pronta="${pronta ? 1 : 0}" data-busca="${esc(`${g.marca} ${g.modelo} ${g.memoria}`.toLowerCase())}">
+        ${foto(g.modelo) ? `<img class="foto" src="${foto(g.modelo)}" alt="${esc(g.modelo)}" width="240" height="240" loading="lazy" decoding="async">` : ''}
         ${pronta ? '<span class="pronta">Pronta entrega</span>' : ''}
         ${mostrarMarca ? `<span class="marca">${esc(g.marca)}</span>` : ''}
         <h3>${esc(g.modelo)}</h3>
@@ -82,7 +86,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     itemListElement: lista.map((g, i) => ({
       '@type': 'ListItem', position: i + 1,
       item: {
-        '@type': 'Product', name: `${g.modelo} ${g.memoria}`, brand: { '@type': 'Brand', name: g.marca },
+        '@type': 'Product', name: `${g.modelo} ${g.memoria}`, brand: { '@type': 'Brand', name: g.marca }, ...(foto(g.modelo) ? { image: SITE + foto(g.modelo) } : {}),
         url: `${url}#${slug(`${g.marca} ${g.modelo} ${g.memoria}${g.ram ? ` · ${g.ram} RAM` : ''}`)}`,
         offers: Object.values(g.ofertas).map((o) => ({
           '@type': 'Offer', price: o.preco.toFixed(2), priceCurrency: 'BRL',
@@ -159,6 +163,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   .cartao { position: relative; background: var(--branco); border-radius: 18px; padding: 26px 24px 22px; display: flex; flex-direction: column; gap: 4px; transition: box-shadow .25s; scroll-margin-top: 80px; }
   .cartao:hover { box-shadow: 2px 4px 12px rgba(0,0,0,.08); }
   .cartao:target { box-shadow: 0 0 0 2px var(--azul); }
+  .foto { display: block; width: 100%; max-width: 220px; height: auto; aspect-ratio: 1; object-fit: contain; margin: 0 auto 14px; }
   .marca { font-size: 12px; color: var(--texto-3); font-weight: 600; }
   .pronta { position: absolute; top: 18px; right: 20px; font-size: 12px; color: #b64400; font-weight: 600; }
   h3 { margin: 0; font-size: 21px; line-height: 1.19; font-weight: 600; letter-spacing: .011em; }
@@ -191,6 +196,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     .grade { gap: 14px; }
     .cartao { padding: 22px 20px 20px; }
     .valores.n3 { grid-template-columns: 1fr 1fr; }
+    .foto { max-width: 150px; margin-bottom: 8px; }
   }
 </style>
 </head>
