@@ -1,0 +1,497 @@
+{
+ "fonte": "Planilha \"Tabela de preços produtos\", aba Vendas",
+ "atualizadoEm": "2026-09-30",
+ "validade": "Valores enquanto durarem os estoques",
+ "bateriaSeminovo": 85,
+ "whatsapp": "5534992072178",
+ "itens": [
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 18 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 9889,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 18 Pro Max",
+   "memoria": "512 GB",
+   "condicao": "lacrado",
+   "preco": 11319,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 18 Pro",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 8459,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 18 Pro",
+   "memoria": "512 GB",
+   "condicao": "lacrado",
+   "preco": 10725,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 7885.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro Max",
+   "memoria": "512 GB",
+   "condicao": "lacrado",
+   "preco": 8954,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro Max",
+   "memoria": "2 TB",
+   "condicao": "lacrado",
+   "preco": 11933.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 7038.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 7203.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro",
+   "memoria": "512 GB",
+   "condicao": "lacrado",
+   "preco": 8743.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 6818.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 5773.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 5058.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 6719.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 5278.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16",
+   "memoria": "128 GB",
+   "condicao": "lacrado",
+   "preco": 4508.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 3881.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 4915.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 3683.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 3848.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14",
+   "memoria": "128 GB",
+   "condicao": "lacrado",
+   "preco": 3848.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 4015,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 2088.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13 Pro",
+   "memoria": "128 GB",
+   "condicao": "lacrado",
+   "preco": 3628.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13 Pro",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 3905,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 2748.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13",
+   "memoria": "128 GB",
+   "condicao": "lacrado",
+   "preco": 3298.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 3463.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13",
+   "memoria": "512 GB",
+   "condicao": "lacrado",
+   "preco": 3837.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 1967.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 2187.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "preco": 2418.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Air",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 4981.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 4607.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 5003.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Plus",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 4134.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Plus",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 4387.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 4233.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro Max",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "preco": 4563.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro Max",
+   "memoria": "1 TB",
+   "condicao": "seminovo",
+   "preco": 4728.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Plus",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 3078.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 2803.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro Max",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 3408.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 3661.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro Max",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "preco": 3925.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro Max",
+   "memoria": "1 TB",
+   "condicao": "seminovo",
+   "preco": 4145.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 3045.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 3243.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Plus",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 2418.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13 Pro Max",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 2935.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 12 Pro Max",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 2275.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 12",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 1527.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 11 Pro Max",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 1593.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 11 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 1428.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 11 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 1615.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 11",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 1043.9,
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone XR",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 1098.9,
+   "pronta": false
+  },
+  {
+   "categoria": "mac",
+   "modelo": "MacBook Air M5 15'' (16GB)",
+   "memoria": "512 GB",
+   "condicao": "lacrado",
+   "preco": 9490,
+   "pronta": false
+  },
+  {
+   "categoria": "mac",
+   "modelo": "MacBook Air M5 13'' (16GB)",
+   "memoria": "512 GB",
+   "condicao": "lacrado",
+   "preco": 7990,
+   "pronta": false
+  },
+  {
+   "categoria": "mac",
+   "modelo": "MacBook Air M4 15'' (16GB)",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 9009,
+   "pronta": false
+  },
+  {
+   "categoria": "mac",
+   "modelo": "MacBook NEO 13'' (8GB)",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 5159,
+   "pronta": false
+  }
+ ]
+}
