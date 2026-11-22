@@ -15,8 +15,8 @@ const brl = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL
 // Regra do Gabriel (22/11/2026): em 12x, cada parcela é o preço à vista dividido por 10. Parcelamento até 18x.
 const parcela12 = (v) => Math.round(v * 10) / 100;
 const slug = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const geracao = (m) => { if (/XR/.test(m)) return 10; const n = m.match(/iPhone (\d+)/); return n ? Number(n[1]) : 0; };
-const ordemMem = (m) => ({ '128 GB': 1, '256 GB': 2, '512 GB': 3, '1 TB': 4, '2 TB': 5 }[m] || 9);
+const geracao = (m) => { if (/XR/.test(m)) return 10; if (/Duo/.test(m)) return 19; const n = m.match(/iPhone (\d+)/); return n ? Number(n[1]) : 0; };
+const ordemMem = (m) => ({ '64 GB': 0, '128 GB': 1, '256 GB': 2, '512 GB': 3, '1 TB': 4, '2 TB': 5 }[m] ?? 9);
 
 // Ilustração do aparelho (até as fotos oficiais entrarem em iphone/fotos/<slug>.webp).
 function desenho(modelo, cat) {
@@ -49,17 +49,19 @@ const lista = [...grupos.values()].sort((a, b) => (a.categoria === b.categoria ?
 
 const zap = (texto) => `https://wa.me/${dados.whatsapp}?text=${encodeURIComponent(texto)}`;
 
+const ROTULOS = { lacrado: 'Novo lacrado', cpo: 'Lacrado CPO', seminovo: 'Seminovo' };
 function oferta(o, rotulo, extra) {
   return `<div class="oferta oferta-${o.condicao}" data-condicao="${o.condicao}" data-preco="${o.preco}">
-          <span class="rotulo">${rotulo}${o.pronta ? ' <b class="pronta">Pronta entrega</b>' : ''}</span>
-          <strong class="preco">${brl(o.preco)}</strong>
+          <span class="rotulo">${rotulo}${o.grade ? ` <b class="nota" title="Nota de conservação">${esc(o.grade)}</b>` : ''}${o.pronta ? ' <b class="pronta">Pronta entrega</b>' : ''}</span>
+          <strong class="preco">${o.aPartir ? '<small>a partir de</small> ' : ''}${brl(o.preco)}</strong>
+          ${o.cores && o.cores.length ? `<span class="cores">${o.cores.map(esc).join(', ')}</span>` : ''}
           <span class="parcela">12x de ${brl(parcela12(o.preco))} · ou até 18x</span>
           ${extra || ''}
         </div>`;
 }
 
 const cartoes = lista.map((g) => {
-  const { lacrado, seminovo } = g.ofertas;
+  const { lacrado, cpo, seminovo } = g.ofertas;
   const nome = `${g.modelo} ${g.memoria}`;
   const menor = Math.min(...Object.values(g.ofertas).map((o) => o.preco));
   const pronta = Object.values(g.ofertas).some((o) => o.pronta);
@@ -71,7 +73,8 @@ const cartoes = lista.map((g) => {
       <div class="corpo">
         <h3>${esc(g.modelo)} <span class="mem">${g.memoria}</span></h3>
         <div class="ofertas">
-          ${lacrado ? oferta(lacrado, 'Novo lacrado') : ''}
+          ${lacrado ? oferta(lacrado, ROTULOS.lacrado) : ''}
+          ${cpo ? oferta(cpo, ROTULOS.cpo, '<span class="nota-cpo">Recondicionado pela Apple, lacrado</span>') : ''}
           ${seminovo ? oferta(seminovo, 'Seminovo', `<span class="bateria" title="Saúde da bateria dos seminovos">Bateria em torno de ${dados.bateriaSeminovo}%</span>`) : ''}
         </div>
         <a class="quero" href="${zap(pedido)}" target="_blank" rel="noopener">Quero este no WhatsApp</a>
@@ -84,6 +87,10 @@ const precoMax = Math.ceil(Math.max(...dados.itens.map((i) => i.preco)) / 500) *
 const menorIphone = Math.min(...dados.itens.filter((i) => i.categoria === 'iphone').map((i) => i.preco));
 const dataBr = dados.atualizadoEm.split('-').reverse().join('/');
 const temPronta = dados.itens.some((i) => i.pronta);
+const temMac = dados.itens.some((i) => i.categoria === 'mac');
+const temCpo = dados.itens.some((i) => i.condicao === 'cpo');
+const modelosIphone = dados.itens.filter((i) => i.categoria === 'iphone').map((i) => i.modelo).sort((a, b) => geracao(a) - geracao(b));
+const faixaModelos = `do ${modelosIphone[0]} ao ${modelosIphone[modelosIphone.length - 1]}`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -95,7 +102,7 @@ const jsonLd = {
       '@type': 'Product', name: `${g.modelo} ${g.memoria}`, brand: { '@type': 'Brand', name: 'Apple' }, url: `${URL_PAGINA}#${slug(`${g.modelo} ${g.memoria}`)}`,
       offers: Object.values(g.ofertas).map((o) => ({
         '@type': 'Offer', price: o.preco.toFixed(2), priceCurrency: 'BRL',
-        itemCondition: o.condicao === 'lacrado' ? 'https://schema.org/NewCondition' : 'https://schema.org/UsedCondition',
+        itemCondition: o.condicao === 'lacrado' ? 'https://schema.org/NewCondition' : o.condicao === 'cpo' ? 'https://schema.org/RefurbishedCondition' : 'https://schema.org/UsedCondition',
         availability: 'https://schema.org/InStock', seller: { '@type': 'Person', name: 'Gabriel Felipe' },
       })),
     },
@@ -108,7 +115,7 @@ const html = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>iPhone novo e seminovo: preços atualizados | Gabriel Felipe</title>
-<meta name="description" content="Preços de iPhone novo lacrado e seminovo (bateria em torno de ${dados.bateriaSeminovo}%) e MacBook, do iPhone 11 ao 18 Pro Max. A partir de ${brl(menorIphone)}, em 12x ou até 18x. Filtre por modelo, memória e preço e chame no WhatsApp.">
+<meta name="description" content="Preços de iPhone novo lacrado e seminovo (bateria em torno de ${dados.bateriaSeminovo}%), ${faixaModelos}. A partir de ${brl(menorIphone)}, em 12x ou até 18x. Filtre por modelo, memória e preço e chame no WhatsApp.">
 <link rel="canonical" href="${URL_PAGINA}">
 <meta name="robots" content="${dados.noGoogle === false ? 'index, follow, max-image-preview:large' : 'noindex, follow'}">
 <meta property="og:type" content="website">
@@ -184,6 +191,12 @@ const html = `<!doctype html>
   .parcela { font-size: 13px; color: var(--tinta-2); }
   .bateria { font-size: 13px; color: var(--tinta-2); display: inline-flex; gap: 6px; align-items: center; }
   .bateria::before { content: ""; width: 18px; height: 9px; border: 1.5px solid currentColor; border-radius: 2px; background: linear-gradient(90deg, var(--zap) 85%, transparent 85%); }
+  .preco small { font-size: 12px; font-weight: 600; color: var(--tinta-3); letter-spacing: 0; }
+  .cores { font-size: 13px; color: var(--tinta-2); }
+  .cores::before { content: "Cores: "; color: var(--tinta-3); }
+  .nota-cpo { font-size: 12.5px; color: var(--tinta-3); }
+  .oferta-cpo { background: #F6FBF8; }
+  .nota { display: inline-block; margin-left: 6px; color: var(--cobalto-escuro); background: var(--cobalto-fundo); padding: 1px 7px; border-radius: 999px; letter-spacing: 0; }
   .pronta { display: inline-block; margin-left: 6px; color: var(--ambar); background: var(--ambar-fundo); padding: 1px 7px; border-radius: 999px; letter-spacing: 0; text-transform: none; }
   .quero { display: inline-flex; justify-content: center; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: 15px; background: var(--zap); color: var(--zap-tinta); padding: 10px 14px; border-radius: 999px; }
   .quero:hover { filter: brightness(.96); }
@@ -209,7 +222,7 @@ const html = `<!doctype html>
   <div class="largura">
     <nav class="nav"><a href="/">Gabriel Felipe</a><a href="${zap('Oi, Gabriel! Vi a tabela de iPhone no site.')}" target="_blank" rel="noopener">Falar no WhatsApp</a></nav>
     <h1>iPhone novo e seminovo, <em>com preço na tela</em></h1>
-    <p class="sub">Novo lacrado e seminovo lado a lado, do iPhone 11 ao 18 Pro Max, e MacBook. Escolha a memória, veja a parcela e me chame no WhatsApp.</p>
+    <p class="sub">Novo lacrado e seminovo lado a lado, ${faixaModelos}${temMac ? ', e MacBook' : ''}. Escolha a memória, veja a parcela e me chame no WhatsApp.</p>
     <div class="fatos"><span>Atualizado em ${dataBr}</span><span>12x ou até 18x no cartão</span><span>Seminovo com bateria em torno de ${dados.bateriaSeminovo}%</span></div>
   </div>
 </header>
@@ -226,13 +239,14 @@ const html = `<!doctype html>
       </select>
     </div>
     <div class="linha" aria-label="Filtros">
-      <span class="grupo-rotulo">Tipo</span>
+      ${temMac ? `<span class="grupo-rotulo">Tipo</span>
       <button class="chip" type="button" data-filtro="categoria" data-valor="" aria-pressed="true">Todos</button>
       <button class="chip" type="button" data-filtro="categoria" data-valor="iphone" aria-pressed="false">iPhone</button>
-      <button class="chip" type="button" data-filtro="categoria" data-valor="mac" aria-pressed="false">MacBook</button>
+      <button class="chip" type="button" data-filtro="categoria" data-valor="mac" aria-pressed="false">MacBook</button>` : ''}
       <span class="grupo-rotulo">Estado</span>
       <button class="chip" type="button" data-filtro="condicao" data-valor="" aria-pressed="true">Todos</button>
       <button class="chip" type="button" data-filtro="condicao" data-valor="lacrado" aria-pressed="false">Novo lacrado</button>
+      ${temCpo ? '<button class="chip" type="button" data-filtro="condicao" data-valor="cpo" aria-pressed="false">Lacrado CPO</button>' : ''}
       <button class="chip" type="button" data-filtro="condicao" data-valor="seminovo" aria-pressed="false">Seminovo</button>
       ${temPronta ? '<button class="chip" type="button" data-filtro="pronta" data-valor="1" aria-pressed="false">Pronta entrega</button>' : ''}
     </div>
@@ -258,7 +272,8 @@ const html = `<!doctype html>
 <section class="info" aria-label="Como funciona">
   <div class="largura">
     <div><h2>Parcelamento</h2><p>À vista no Pix ou em 12x no cartão, com parcela de um décimo do valor à vista. Também parcelo em até 18x.</p></div>
-    <div><h2>Seminovos</h2><p>Aparelhos revisados, com a saúde da bateria em torno de ${dados.bateriaSeminovo}%. Pergunte pela cor e pelo estado de cada um.</p></div>
+    <div><h2>Seminovos</h2><p>Aparelhos revisados, com a saúde da bateria em torno de ${dados.bateriaSeminovo}%. A letra é a nota de conservação (A+ é a melhor; podem ter pequenos detalhes).</p></div>
+    ${temCpo ? '<div><h2>Lacrado CPO</h2><p>Recondicionado pela própria Apple e vendido lacrado, com preço menor que o novo.</p></div>' : ''}
     <div><h2>Como comprar</h2><p>Toque em "Quero este no WhatsApp", confirme a cor e a disponibilidade e combine a entrega.</p></div>
   </div>
   <p class="largura rodape">Imagens ilustrativas. iPhone e MacBook são marcas da Apple Inc.; esta página não é da Apple. Preços sujeitos a alteração.</p>

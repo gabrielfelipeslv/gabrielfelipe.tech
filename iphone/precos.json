@@ -1,176 +1,22 @@
 {
- "fonte": "Planilha \"Tabela de preços produtos\", aba Vendas",
- "atualizadoEm": "2026-09-30",
+ "fonte": "Tabelas do grupo Valores de produtos (preço de venda)",
+ "atualizadoEm": "2026-11-22",
  "validade": "Valores enquanto durarem os estoques",
  "bateriaSeminovo": 85,
  "whatsapp": "5534992072178",
+ "noGoogle": true,
  "itens": [
   {
    "categoria": "iphone",
-   "modelo": "iPhone 18 Pro Max",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 9889,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 18 Pro Max",
-   "memoria": "512 GB",
-   "condicao": "lacrado",
-   "preco": 11319,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 18 Pro",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 8459,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 18 Pro",
-   "memoria": "512 GB",
-   "condicao": "lacrado",
-   "preco": 10725,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17 Pro Max",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 7885.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17 Pro Max",
-   "memoria": "512 GB",
-   "condicao": "lacrado",
-   "preco": 8954,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17 Pro Max",
-   "memoria": "2 TB",
-   "condicao": "lacrado",
-   "preco": 11933.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17 Pro Max",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 7038.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17 Pro",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 7203.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17 Pro",
-   "memoria": "512 GB",
-   "condicao": "lacrado",
-   "preco": 8743.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17 Pro",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 6818.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 5773.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 5058.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 16 Pro Max",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 6719.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 16 Pro Max",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 5278.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 16",
+   "modelo": "iPhone 13 Pro",
    "memoria": "128 GB",
-   "condicao": "lacrado",
-   "preco": 4508.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 16",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 3881.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 15 Pro",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 4915.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 15 Pro",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 3683.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 15 Pro",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 3848.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 14",
-   "memoria": "128 GB",
-   "condicao": "lacrado",
-   "preco": 3848.9,
+   "condicao": "cpo",
+   "preco": 3738.9,
+   "aPartir": false,
+   "cores": [
+    "Preto",
+    "Silver"
+   ],
    "pronta": false
   },
   {
@@ -178,239 +24,212 @@
    "modelo": "iPhone 14",
    "memoria": "256 GB",
    "condicao": "lacrado",
-   "preco": 4015,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 14",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 2088.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 13 Pro",
-   "memoria": "128 GB",
-   "condicao": "lacrado",
-   "preco": 3628.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 13 Pro",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 3905,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 13 Pro",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 2748.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 13",
-   "memoria": "128 GB",
-   "condicao": "lacrado",
-   "preco": 3298.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 13",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 3463.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 13",
-   "memoria": "512 GB",
-   "condicao": "lacrado",
-   "preco": 3837.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 13",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 1967.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 13",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 2187.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 13",
-   "memoria": "512 GB",
-   "condicao": "seminovo",
-   "preco": 2418.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 17 Air",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 4981.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 16 Pro",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 4607.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 16 Pro",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 5003.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 16 Plus",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 4134.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 16 Plus",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 4387.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 15 Pro Max",
-   "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 4233.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 15 Pro Max",
-   "memoria": "512 GB",
-   "condicao": "seminovo",
-   "preco": 4563.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 15 Pro Max",
-   "memoria": "1 TB",
-   "condicao": "seminovo",
-   "preco": 4728.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 15 Plus",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 3078.9,
+   "preco": 4398.9,
+   "aPartir": false,
+   "cores": [
+    "Branco",
+    "Preto"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
    "modelo": "iPhone 15",
    "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 2803.9,
+   "condicao": "lacrado",
+   "preco": 4343.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Preto"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
-   "modelo": "iPhone 14 Pro Max",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 3408.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 14 Pro Max",
+   "modelo": "iPhone 15",
    "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 3661.9,
+   "condicao": "cpo",
+   "preco": 4508.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Preto"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
-   "modelo": "iPhone 14 Pro Max",
+   "modelo": "iPhone 16",
+   "memoria": "128 GB",
+   "condicao": "cpo",
+   "preco": 4684.9,
+   "aPartir": false,
+   "cores": [
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16",
+   "memoria": "128 GB",
+   "condicao": "lacrado",
+   "preco": 5049,
+   "aPartir": false,
+   "cores": [
+    "Branco",
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 5993.9,
+   "aPartir": true,
+   "cores": [
+    "Azul",
+    "Branco",
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 7643.9,
+   "aPartir": false,
+   "cores": [
+    "Laranja"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 8525,
+   "aPartir": true,
+   "cores": [
+    "Laranja",
+    "Azul",
+    "Silver"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro Max",
    "memoria": "512 GB",
-   "condicao": "seminovo",
-   "preco": 3925.9,
+   "condicao": "lacrado",
+   "preco": 9955,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Silver"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
-   "modelo": "iPhone 14 Pro Max",
-   "memoria": "1 TB",
-   "condicao": "seminovo",
-   "preco": 4145.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 14 Pro",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 3045.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 14 Pro",
+   "modelo": "iPhone 18 Pro",
    "memoria": "256 GB",
-   "condicao": "seminovo",
-   "preco": 3243.9,
+   "condicao": "lacrado",
+   "preco": 9339,
+   "aPartir": false,
+   "cores": [
+    "Bordô",
+    "Preto",
+    "Glacial"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
-   "modelo": "iPhone 14 Plus",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 2418.9,
+   "modelo": "iPhone 18 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 9845,
+   "aPartir": true,
+   "cores": [
+    "Azul",
+    "Preto",
+    "Glacial",
+    "Bordô",
+    "Silver"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
-   "modelo": "iPhone 13 Pro Max",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 2935.9,
+   "modelo": "iPhone 18 Pro Max",
+   "memoria": "512 GB",
+   "condicao": "lacrado",
+   "preco": 11825,
+   "aPartir": false,
+   "cores": [
+    "Bordô",
+    "Glacial"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
-   "modelo": "iPhone 12 Pro Max",
-   "memoria": "128 GB",
+   "modelo": "iPhone 18 Pro Max",
+   "memoria": "2 TB",
+   "condicao": "lacrado",
+   "preco": 18150,
+   "aPartir": false,
+   "cores": [
+    "Glacial"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone Duo",
+   "memoria": "256 GB",
+   "condicao": "lacrado",
+   "preco": 15950,
+   "aPartir": false,
+   "cores": [
+    "Night Sky"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 11 Pro",
+   "memoria": "64 GB",
    "condicao": "seminovo",
-   "preco": 2275.9,
+   "grade": "A",
+   "preco": 1428.9,
+   "aPartir": false,
+   "cores": [
+    "Preto",
+    "Verde"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 11 Pro Max",
+   "memoria": "64 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 1593.9,
+   "aPartir": false,
+   "cores": [
+    "Gold",
+    "Verde",
+    "Preto"
+   ],
    "pronta": false
   },
   {
@@ -418,81 +237,500 @@
    "modelo": "iPhone 12",
    "memoria": "128 GB",
    "condicao": "seminovo",
+   "grade": "A-",
    "preco": 1527.9,
+   "aPartir": false,
+   "cores": [
+    "Lilás",
+    "Vermelho"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
-   "modelo": "iPhone 11 Pro Max",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 1593.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 11 Pro",
-   "memoria": "128 GB",
-   "condicao": "seminovo",
-   "preco": 1428.9,
-   "pronta": false
-  },
-  {
-   "categoria": "iphone",
-   "modelo": "iPhone 11 Pro",
+   "modelo": "iPhone 12 Pro",
    "memoria": "256 GB",
    "condicao": "seminovo",
-   "preco": 1615.9,
+   "grade": "A",
+   "preco": 2187.9,
+   "aPartir": false,
+   "cores": [
+    "Azul"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
-   "modelo": "iPhone 11",
+   "modelo": "iPhone 12 Pro Max",
    "memoria": "128 GB",
    "condicao": "seminovo",
-   "preco": 1043.9,
+   "grade": "A",
+   "preco": 2308.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Branco",
+    "Gold"
+   ],
    "pronta": false
   },
   {
    "categoria": "iphone",
-   "modelo": "iPhone XR",
+   "modelo": "iPhone 12 Pro Max",
    "memoria": "256 GB",
    "condicao": "seminovo",
-   "preco": 1098.9,
+   "grade": "A",
+   "preco": 2528.9,
+   "aPartir": false,
+   "cores": [
+    "Preto"
+   ],
    "pronta": false
   },
   {
-   "categoria": "mac",
-   "modelo": "MacBook Air M5 15'' (16GB)",
+   "categoria": "iphone",
+   "modelo": "iPhone 13",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 1945.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Preto",
+    "Vermelho",
+    "Branco",
+    "Rosa"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 2165.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Preto",
+    "Vermelho"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 2605.9,
+   "aPartir": false,
+   "cores": [
+    "Silver"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 2638.9,
+   "aPartir": false,
+   "cores": [
+    "Azul"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13 Pro",
    "memoria": "512 GB",
-   "condicao": "lacrado",
-   "preco": 9490,
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 2968.9,
+   "aPartir": false,
+   "cores": [
+    "Azul"
+   ],
    "pronta": false
   },
   {
-   "categoria": "mac",
-   "modelo": "MacBook Air M5 13'' (16GB)",
+   "categoria": "iphone",
+   "modelo": "iPhone 13 Pro Max",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 2935.9,
+   "aPartir": false,
+   "cores": [
+    "Preto",
+    "Azul",
+    "Verde"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 13 Pro Max",
    "memoria": "512 GB",
-   "condicao": "lacrado",
-   "preco": 7990,
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3408.9,
+   "aPartir": false,
+   "cores": [
+    "Preto"
+   ],
    "pronta": false
   },
   {
-   "categoria": "mac",
-   "modelo": "MacBook Air M4 15'' (16GB)",
-   "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 9009,
+   "categoria": "iphone",
+   "modelo": "iPhone 14",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 2198.9,
+   "aPartir": false,
+   "cores": [
+    "Lilás",
+    "Azul",
+    "Vermelho",
+    "Preto"
+   ],
    "pronta": false
   },
   {
-   "categoria": "mac",
-   "modelo": "MacBook NEO 13'' (8GB)",
+   "categoria": "iphone",
+   "modelo": "iPhone 14",
    "memoria": "256 GB",
-   "condicao": "lacrado",
-   "preco": 5159,
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 2418.9,
+   "aPartir": false,
+   "cores": [
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Plus",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 2418.9,
+   "aPartir": false,
+   "cores": [
+    "Preto",
+    "Lilás",
+    "Azul"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3023.9,
+   "aPartir": false,
+   "cores": [
+    "Roxo",
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3243.9,
+   "aPartir": false,
+   "cores": [
+    "Preto",
+    "Roxo"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3441.9,
+   "aPartir": false,
+   "cores": [
+    "Preto",
+    "Roxo"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro Max",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3463.9,
+   "aPartir": false,
+   "cores": [
+    "Roxo",
+    "Gold"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3661.9,
+   "aPartir": false,
+   "cores": [
+    "Roxo"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 14 Pro Max",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3870.9,
+   "aPartir": false,
+   "cores": [
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 2803.9,
+   "aPartir": false,
+   "cores": [
+    "Rosa",
+    "Verde",
+    "Preto",
+    "Azul"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Plus",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3078.9,
+   "aPartir": false,
+   "cores": [
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3683.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 3848.9,
+   "aPartir": false,
+   "cores": [
+    "Silver",
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 4398.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Preto",
+    "Natural"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro Max",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 4585.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 15 Pro Max",
+   "memoria": "1 TB",
+   "condicao": "seminovo",
+   "grade": "A",
+   "preco": 4805.9,
+   "aPartir": false,
+   "cores": [
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 3848.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Verde",
+    "Preto"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Plus",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 4134.9,
+   "aPartir": false,
+   "cores": [
+    "Azul"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 4563.9,
+   "aPartir": false,
+   "cores": [
+    "Preto",
+    "Desert"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 4838.9,
+   "aPartir": false,
+   "cores": [
+    "Preto",
+    "Natural"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 16 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 5388.9,
+   "aPartir": false,
+   "cores": [
+    "Natural"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 7588.9,
+   "aPartir": false,
+   "cores": [
+    "Silver"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 7093.9,
+   "aPartir": false,
+   "cores": [
+    "Laranja"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 17 Pro Max",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 8237.9,
+   "aPartir": false,
+   "cores": [
+    "Azul"
+   ],
+   "pronta": false
+  },
+  {
+   "categoria": "iphone",
+   "modelo": "iPhone 18 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "grade": "A+",
+   "preco": 9458.9,
+   "aPartir": false,
+   "cores": [
+    "Preto"
+   ],
    "pronta": false
   }
- ],
- "noGoogle": true
+ ]
 }
