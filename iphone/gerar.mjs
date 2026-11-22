@@ -110,7 +110,7 @@ const html = `<!doctype html>
 <title>iPhone novo e seminovo: preços atualizados | Gabriel Felipe</title>
 <meta name="description" content="Preços de iPhone novo lacrado e seminovo (bateria em torno de ${dados.bateriaSeminovo}%) e MacBook, do iPhone 11 ao 18 Pro Max. A partir de ${brl(menorIphone)}, em 12x ou até 18x. Filtre por modelo, memória e preço e chame no WhatsApp.">
 <link rel="canonical" href="${URL_PAGINA}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="${dados.noGoogle === false ? 'index, follow, max-image-preview:large' : 'noindex, follow'}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="${URL_PAGINA}">

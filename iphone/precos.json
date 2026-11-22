@@ -493,5 +493,6 @@
    "preco": 5159,
    "pronta": false
   }
- ]
+ ],
+ "noGoogle": true
 }
