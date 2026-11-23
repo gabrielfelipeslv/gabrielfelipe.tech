@@ -1259,7 +1259,7 @@
     c.querySelector('.valores').className = 'valores n' + blocos.length;
     c.querySelector('.valores').innerHTML = blocos.map(function (b) {
       return '<div class="valor" data-condicao="' + b.k + '" data-preco="' + b.preco + '"><span class="estado">' + NOMES[b.k]
-        + (b.nota ? ' <span class="nota">' + b.nota + '</span>' : '') + (b.aPartir ? ' <span class="apartir">· a partir de</span>' : '')
+        + (/^A[+-]?$/.test(b.nota) ? ' <span class="nota">' + b.nota + '</span>' : '') + (b.aPartir ? ' <span class="apartir">· a partir de</span>' : '')
         + '</span><span class="preco">' + brl(b.preco) + '</span><span class="parcela">ou 12x de ' + brl(Math.round(b.preco * 10) / 100) + '</span></div>';
     }).join('');
     c._menor = blocos.length ? Math.min.apply(null, blocos.map(function (b) { return b.preco; })) : Infinity;

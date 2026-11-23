@@ -163,7 +163,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>
 <style>
   :root {
     --fundo: #f5f5f7; --branco: #ffffff; --texto: #1d1d1f; --texto-2: #6e6e73; --texto-3: #86868b; --linha: #d2d2d7;
@@ -357,7 +357,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     c.querySelector('.valores').className = 'valores n' + blocos.length;
     c.querySelector('.valores').innerHTML = blocos.map(function (b) {
       return '<div class="valor" data-condicao="' + b.k + '" data-preco="' + b.preco + '"><span class="estado">' + NOMES[b.k]
-        + (b.nota ? ' <span class="nota">' + b.nota + '</span>' : '') + (b.aPartir ? ' <span class="apartir">· a partir de</span>' : '')
+        + (/^A[+-]?$/.test(b.nota) ? ' <span class="nota">' + b.nota + '</span>' : '') + (b.aPartir ? ' <span class="apartir">· a partir de</span>' : '')
         + '</span><span class="preco">' + brl(b.preco) + '</span><span class="parcela">ou 12x de ' + brl(Math.round(b.preco * 10) / 100) + '</span></div>';
     }).join('');
     c._menor = blocos.length ? Math.min.apply(null, blocos.map(function (b) { return b.preco; })) : Infinity;
