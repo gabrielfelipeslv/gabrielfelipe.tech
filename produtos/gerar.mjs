@@ -189,7 +189,11 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
 <meta property="og:url" content="${url}">
 <meta property="og:title" content="${esc(h1)}">
 <meta property="og:description" content="${esc(descricao)}">
-<meta property="og:image" content="${SITE}/assets/compartilhar.jpg">
+<meta property="og:image" content="${SITE}/produtos/compartilhar.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="iPhone novo e seminovo em até 18x">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f5f5f7">
 <link rel="icon" href="/assets/icone-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
