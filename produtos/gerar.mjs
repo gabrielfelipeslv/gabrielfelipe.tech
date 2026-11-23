@@ -21,6 +21,10 @@ const slug = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().rep
 const geracao = (m) => { if (/XR/.test(m)) return 10; if (/Duo/.test(m)) return 19; const n = m.match(/(\d+)/); return n ? Number(n[1]) : 0; };
 const ordemMem = (m) => ({ '64 GB': 0, '128 GB': 1, '256 GB': 2, '512 GB': 3, '1 TB': 4, '2 TB': 5 }[m] ?? 9);
 const ESTADO = { lacrado: 'Novo', seminovo: 'Seminovo' };
+// Categorias que a sala Valores já grava (montar.mjs); sem categoria = celular. /iphone mostra só os celulares da Apple.
+const CATEGORIAS = { celular: ['Celular', 'Celulares'], tablet: ['Tablet', 'Tablets'], notebook: ['Notebook', 'Notebooks'], relogio: ['Relógio', 'Relógios'], fone: ['Fone', 'Fones'] };
+const categoria = (i) => (CATEGORIAS[i.categoria] ? i.categoria : 'celular');
+const juntar = (l) => (l.length > 1 ? `${l.slice(0, -1).join(', ')} e ${l[l.length - 1]}` : l[0] || '');
 const zap = (texto) => `https://wa.me/${dados.whatsapp}?text=${encodeURIComponent(texto)}`;
 const dataBr = dados.atualizadoEm.split('-').reverse().join('/');
 // Foto oficial do fabricante em produtos/fotos/<modelo>.webp (iPhone: loja da Apple; Xiaomi/Poco: mi.com). Sem foto, sem imagem.
@@ -38,7 +42,7 @@ const coresDe = (it) => it.precoCor || Object.fromEntries((it.cores || []).map((
 
 function precoBloco(o) {
   return `<div class="valor" data-condicao="${o.condicao}" data-preco="${o.preco}">
-            <span class="estado">${ESTADO[o.condicao]}${o.grade ? ` <span class="nota">${esc(o.grade)}</span>` : ''}${o.aPartir ? ' <span class="apartir">· a partir de</span>' : ''}</span>
+            <span class="estado">${ESTADO[o.condicao]}${o.aPartir ? ' <span class="apartir">· a partir de</span>' : ''}</span>
             <span class="preco">${brl(o.preco)}</span>
             <span class="parcela">ou 12x de ${parcela12(o.preco)}</span>
           </div>`;
@@ -50,9 +54,36 @@ function resumo(variantes) {
     const ops = variantes.map((v) => v[c]).filter(Boolean);
     if (!ops.length) return null;
     const menor = ops.reduce((a, b) => (b.preco < a.preco ? b : a));
-    const notas = [...new Set(ops.map((o) => o.grade).filter(Boolean))];
-    return { condicao: c, preco: menor.preco, aPartir: ops.length > 1 || ops.some((o) => o.aPartir), grade: notas.length === 1 ? notas[0] : '' };
+    return { condicao: c, preco: menor.preco, aPartir: ops.length > 1 || ops.some((o) => o.aPartir) };
   }).filter(Boolean);
+}
+
+/** Banner da entrada (pedido do Gabriel, 23/11/2026: "tá muito só texto"): os iPhones mais novos que têm foto oficial,
+ *  um por linha (o 18 Pro e o 18 Pro Max têm a mesma foto), cada um levando ao cartão dele com o menor preço. */
+function banner({ caminho }) {
+  const apple = dados.itens.filter((i) => i.marca === 'Apple' && categoria(i) === 'celular');
+  const modelos = [...new Set(apple.map((i) => i.modelo))].filter(foto)
+    .sort((a, b) => geracao(b) - geracao(a) || /Max/.test(b) - /Max/.test(a) || /Pro/.test(b) - /Pro/.test(a) || a.localeCompare(b));
+  const linhas = new Set(); const escolhidos = [];
+  for (const m of modelos) {
+    const linha = `${geracao(m)}-${/Pro/.test(m) ? 'pro' : 'base'}`;
+    if (linhas.has(linha)) continue;
+    linhas.add(linha); escolhidos.push(m);
+    if (escolhidos.length === 4) break;
+  }
+  if (escolhidos.length < 2) return '';
+  const menorDe = (m) => Math.min(...apple.filter((i) => i.modelo === m).map((i) => i.preco));
+  return `<section class="banner" aria-label="Lançamentos">
+  <div class="largura">
+    <p class="chamada">Os <span>lançamentos</span> do iPhone.</p>
+    <p class="apoio">Novos e seminovos, em até 18x no cartão.${caminho === '/iphone/' ? '' : ' <a class="ver" href="/iphone/">Ver todos os iPhones ›</a>'}</p>
+    <ul class="vitrine" style="--n:${escolhidos.length}">
+      ${escolhidos.map((m, i) => `<li><a href="#${slug(`Apple ${m}`)}" data-cartao="${slug(`Apple ${m}`)}">
+        <img src="${foto(m)}" alt="${esc(m)}" width="220" height="220" ${i < 2 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+        <strong>${esc(m)}</strong><small>a partir de ${brl(menorDe(m))}</small></a></li>`).join('\n      ')}
+    </ul>
+  </div>
+</section>`;
 }
 
 function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
@@ -62,13 +93,13 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   const grupos = new Map();
   for (const original of itens) {
     const it = original.condicao === 'cpo' ? { ...original, condicao: 'lacrado' } : original;
-    const chave = [it.marca, it.modelo].join('|');
-    if (!grupos.has(chave)) grupos.set(chave, { marca: it.marca, modelo: it.modelo, variantes: new Map() });
+    const chave = [categoria(it), it.marca, it.modelo].join('|');
+    if (!grupos.has(chave)) grupos.set(chave, { categoria: categoria(it), marca: it.marca, modelo: it.modelo, variantes: new Map() });
     const g = grupos.get(chave); const vk = [it.memoria, it.ram || ''].join('|');
     if (!g.variantes.has(vk)) g.variantes.set(vk, { mem: it.memoria, ram: it.ram || '', pronta: false });
     const v = g.variantes.get(vk); const ja = v[it.condicao];
     // c: cor → preço de venda; x: cores com mais de um preço (ex.: CPO e lacrado juntos), que mostram "a partir de".
-    const novo = { preco: it.preco, aPartir: Boolean(it.aPartir), grade: it.grade || '', c: coresDe(it), x: [] };
+    const novo = { preco: it.preco, aPartir: Boolean(it.aPartir), c: coresDe(it), x: [] };
     if (!ja) v[it.condicao] = novo;
     else {
       const c = { ...ja.c }; const x = [...ja.x];
@@ -95,7 +126,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     // Todas as cores do modelo num cartão só (pedido do Gabriel: "sem precisar de um item na lista para cada").
     const cores = [...new Set(g.variantes.flatMap((v) => ['lacrado', 'seminovo'].flatMap((k) => (v[k] ? Object.keys(v[k].c) : []))))].filter((c) => !semCor(c));
     return `
-      <article class="cartao" id="${slug(`${g.marca} ${g.modelo}`)}" data-marca="${esc(g.marca)}" data-modelo="${esc(g.modelo)}"
+      <article class="cartao" id="${slug(`${g.marca} ${g.modelo}`)}" data-categoria="${g.categoria}" data-marca="${esc(g.marca)}" data-modelo="${esc(g.modelo)}"
         data-geracao="${geracao(g.modelo)}" data-menor="${menor}" data-pronta="${pronta ? 1 : 0}"
         data-busca="${esc(`${g.marca} ${g.modelo} ${g.variantes.map((v) => v.mem).join(' ')} ${cores.join(' ')}`.toLowerCase())}" data-variantes="${esc(JSON.stringify(dadosVar))}">
         ${foto(g.modelo) ? `<img class="foto" src="${foto(g.modelo)}" alt="${esc(g.modelo)}" width="240" height="240" loading="lazy" decoding="async">` : ''}
@@ -120,6 +151,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   const conta = (m) => itens.filter((i) => i.marca === m).length;
   const marcas = [...new Set(itens.map((i) => i.marca))].sort((a, b) => ordemMarca(a) - ordemMarca(b) || conta(b) - conta(a));
   const estados = ['lacrado', 'seminovo'].filter((c) => itens.some((i) => (i.condicao === 'cpo' ? 'lacrado' : i.condicao) === c));
+  const categorias = Object.keys(CATEGORIAS).filter((c) => itens.some((i) => categoria(i) === c));
   const memorias = [...new Set(itens.map((i) => i.memoria))].sort((a, b) => ordemMem(a) - ordemMem(b));
   const temSeminovo = estados.includes('seminovo');
     const temPronta = itens.some((i) => i.pronta);
@@ -184,9 +216,25 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   .nav .largura { height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 12px; letter-spacing: -.01em; }
   .nav a { color: var(--texto); opacity: .85; }
   .nav a:hover { opacity: 1; text-decoration: none; }
-  .nav .links { display: flex; gap: 22px; }
+  .nav .largura > a { flex: none; }
+  .nav .links { display: flex; gap: 22px; min-width: 0; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+  .nav .links::-webkit-scrollbar { display: none; }
   .nav [aria-current] { opacity: 1; font-weight: 600; }
 
+  .banner { background: radial-gradient(ellipse 70% 60% at 50% 105%, #3a2030 0%, #120c12 45%, #000 75%); color: #f5f5f7; overflow: hidden; }
+  .banner .largura { padding-block: 44px 34px; text-align: center; }
+  .chamada { margin: 0; font-size: clamp(30px, 5.5vw, 48px); line-height: 1.08; font-weight: 600; letter-spacing: -.015em; }
+  .chamada span { background: linear-gradient(90deg, #f5a05f, #d8698c 55%, #9a8cf2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .apoio { margin: 8px 0 0; color: #a1a1a6; font-size: 17px; }
+  .apoio .ver { color: #2997ff; white-space: nowrap; }
+  .vitrine { list-style: none; margin: 30px auto 0; padding: 0; max-width: 960px; display: grid; grid-template-columns: repeat(var(--n), 1fr); gap: 12px; }
+  .vitrine a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: inherit; }
+  .vitrine a:hover { text-decoration: none; }
+  .vitrine img { width: 100%; max-width: 210px; height: auto; aspect-ratio: 1; object-fit: contain; margin-bottom: 10px; filter: drop-shadow(0 20px 28px rgba(0,0,0,.7)); transition: transform .35s ease; }
+  .vitrine a:hover img, .vitrine a:focus-visible img { transform: translateY(-6px) scale(1.03); }
+  .vitrine strong { font-size: 15px; font-weight: 600; }
+  .vitrine small { font-size: 13px; color: #a1a1a6; }
+  .vitrine a:hover small { color: #2997ff; }
   .cabeca .largura { padding-block: 44px 24px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px; }
   h1 { margin: 0; font-size: clamp(32px, 6vw, 48px); line-height: 1.08; font-weight: 600; letter-spacing: -.015em; }
   h1 span { color: var(--texto-2); }
@@ -230,7 +278,6 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   .valor { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
   .valor[hidden] { display: none; }
   .estado { font-size: 12px; color: var(--texto-2); font-weight: 600; }
-  .nota { font-weight: 400; color: var(--texto-3); }
   .preco { font-size: 17px; font-weight: 600; white-space: nowrap; }
   .apartir { font-weight: 400; color: var(--texto-3); }
   .parcela { font-size: 12px; color: var(--texto-2); white-space: nowrap; }
@@ -246,6 +293,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   .rodape { background: var(--fundo); }
   .rodape .largura { padding-block: 18px 34px; font-size: 12px; color: var(--texto-3); }
   @media (max-width: 640px) {
+    .nav .links { gap: 16px; }
     .filtros { position: static; }
     .filtros .largura { gap: 8px; }
     .segmento { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
@@ -253,6 +301,13 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     .cartao { padding: 22px 20px 20px; }
     .valores.n3 { grid-template-columns: 1fr 1fr; }
     .foto { max-width: 150px; margin-bottom: 8px; }
+    .banner .largura { padding-block: 32px 26px; }
+    .apoio { font-size: 15px; }
+    .apoio .ver { display: block; margin-top: 4px; }
+    .vitrine { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 22px -22px 0; padding: 0 22px; gap: 6px; }
+    .vitrine::-webkit-scrollbar { display: none; }
+    .vitrine li { flex: 0 0 42%; scroll-snap-align: center; }
+    .vitrine img { max-width: 150px; margin-bottom: 6px; }
   }
 </style>
 </head>
@@ -263,10 +318,13 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     <span class="links">
       <a href="/produtos/"${caminho === '/produtos/' ? ' aria-current="page"' : ''}>Todos os produtos</a>
       <a href="/iphone/"${caminho === '/iphone/' ? ' aria-current="page"' : ''}>iPhone</a>
+      ${categoriasTodas.filter((c) => c !== 'celular').map((c) => `<a href="/produtos/?tipo=${c}">${CATEGORIAS[c][1]}</a>`).join('\n      ')}
       <a href="${zap('Oi, Gabriel! Vi os preços no site.')}" target="_blank" rel="noopener">WhatsApp</a>
     </span>
   </div>
 </nav>
+
+${banner({ caminho })}
 
 <header class="cabeca">
   <div class="largura">
@@ -277,6 +335,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
 
 <div class="filtros" role="search">
   <div class="largura">
+    ${categorias.length > 1 ? seg('categoria', 'Tipo', [['', 'Tudo'], ...categorias.map((c) => [c, CATEGORIAS[c][1]])]) : ''}
     ${mostrarMarca && marcas.length > 1 ? seg('marca', 'Marca', [['', 'Todas'], ...marcas.map((m) => [m, m])]) : ''}
     ${estados.length > 1 ? seg('condicao', 'Estado', [['', 'Todos'], ...estados.map((c) => [c, ESTADO[c] + (c === 'seminovo' ? 's' : c === 'lacrado' ? 's' : '')])]) : ''}
     ${temPronta ? seg('pronta', 'Pronta entrega', [['', 'Todos'], ['1', 'Pronta entrega']]) : ''}
@@ -306,7 +365,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
 <section class="info" aria-label="Como funciona">
   <div class="largura">
     <div><h2>Até 18x no cartão</h2><p>À vista no Pix ou em 12x com parcela de um décimo do valor. Também parcelo em até 18x.</p></div>
-    ${temSeminovo ? `<div><h2>Seminovos revisados</h2><p>Bateria em torno de ${dados.bateriaSeminovo}%. A letra ao lado é a nota de conservação: A+ é a melhor.</p></div>` : ''}
+    ${temSeminovo ? '<div><h2>Novo ou seminovo</h2><p>Todo aparelho é novo ou seminovo. Dos seminovos, eu te mostro no WhatsApp as opções disponíveis no dia.</p></div>' : ''}
     <div><h2>Compra pelo WhatsApp</h2><p>Escolha a memória e a cor no cartão, toque em Comprar e combine a entrega comigo.</p></div>
   </div>
 </section>
@@ -318,7 +377,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   var cartoes = Array.prototype.slice.call(grade.querySelectorAll('.cartao'));
   var busca = document.getElementById('busca'), ordem = document.getElementById('ordem'), memoria = document.getElementById('memoria');
   var contagem = document.getElementById('contagem'), vazio = document.getElementById('vazio');
-  var estado = { marca: '', condicao: '', pronta: '' };
+  var estado = { categoria: '', marca: '', condicao: '', pronta: '' };
   var limpo = function (s) { return s.normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase(); };
   var brl = function (v) { return Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
   var NOMES = { lacrado: 'Novo', seminovo: 'Seminovo' };
@@ -340,9 +399,8 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
       var ops = escolhida.map(function (v) { return v[campo(k)]; }).filter(function (o) { return o && (!cor || (o.c && o.c[cor] != null)); });
       if (!ops.length) return;
       var m = ops.reduce(function (a, b) { return preco(b) < preco(a) ? b : a; });
-      var notas = ops.map(function (o) { return o.grade; }).filter(function (g, i, a) { return g && a.indexOf(g) === i; });
       var aPartir = ops.length > 1 || ops.some(function (o) { return cor ? (o.x || []).indexOf(cor) >= 0 : o.aPartir; });
-      blocos.push({ k: k, preco: preco(m), nota: notas.length === 1 ? notas[0] : '', aPartir: aPartir });
+      blocos.push({ k: k, preco: preco(m), aPartir: aPartir });
     });
     var nome = c.querySelector('.cor-nome');
     if (nome) {
@@ -357,7 +415,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     c.querySelector('.valores').className = 'valores n' + blocos.length;
     c.querySelector('.valores').innerHTML = blocos.map(function (b) {
       return '<div class="valor" data-condicao="' + b.k + '" data-preco="' + b.preco + '"><span class="estado">' + NOMES[b.k]
-        + (/^A[+-]?$/.test(b.nota) ? ' <span class="nota">' + b.nota + '</span>' : '') + (b.aPartir ? ' <span class="apartir">· a partir de</span>' : '')
+        + (b.aPartir ? ' <span class="apartir">· a partir de</span>' : '')
         + '</span><span class="preco">' + brl(b.preco) + '</span><span class="parcela">ou 12x de ' + brl(Math.round(b.preco * 10) / 100) + '</span></div>';
     }).join('');
     c._menor = blocos.length ? Math.min.apply(null, blocos.map(function (b) { return b.preco; })) : Infinity;
@@ -372,7 +430,8 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     cartoes.forEach(function (c) {
       if (c._sel !== null && memoria.value && c._var[c._sel].m !== memoria.value) c._sel = null;
       var tem = montar(c);
-      var ok = tem && (!estado.marca || c.getAttribute('data-marca') === estado.marca)
+      var ok = tem && (!estado.categoria || c.getAttribute('data-categoria') === estado.categoria)
+        && (!estado.marca || c.getAttribute('data-marca') === estado.marca)
         && (!estado.pronta || c.getAttribute('data-pronta') === '1')
         && (!memoria.value || c._var.some(function (v) { return v.m === memoria.value; }))
         && termos.every(function (t) { return limpo(c.getAttribute('data-busca')).indexOf(t) >= 0; });
@@ -411,14 +470,25 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     if (memoria.value && c._sel !== null && c._var[i].m !== memoria.value) { memoria.value = ''; aplicar(); return; }
     montar(c); if (ordem.value !== 'novo') ordenar();
   });
+  // Banner: se o cartão do modelo estiver escondido pelos filtros, limpa os filtros antes de ir até ele.
+  document.querySelectorAll('.vitrine a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var alvo = document.getElementById(a.getAttribute('data-cartao'));
+      if (!alvo || !alvo.hidden) return;
+      busca.value = ''; memoria.value = '';
+      document.querySelectorAll('.segmento').forEach(function (s) { var b = s.querySelector('button'); if (b) b.click(); });
+      aplicar();
+    });
+  });
   busca.addEventListener('input', aplicar);
   memoria.addEventListener('change', aplicar);
   ordem.addEventListener('change', ordenar);
   try {
     var p = new URLSearchParams(location.search);
     if (p.get('q')) busca.value = p.get('q');
-    var m = p.get('marca');
-    if (m) document.querySelectorAll('.segmento button[data-filtro="marca"]').forEach(function (b) { if (b.getAttribute('data-valor').toLowerCase() === m.toLowerCase()) b.click(); });
+    [['marca', p.get('marca')], ['categoria', p.get('tipo')]].forEach(function (par) {
+      if (par[1]) document.querySelectorAll('.segmento button[data-filtro="' + par[0] + '"]').forEach(function (b) { if (b.getAttribute('data-valor').toLowerCase() === par[1].toLowerCase()) b.click(); });
+    });
   } catch (e) {}
   aplicar();
 })();
@@ -428,24 +498,26 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
 `;
 }
 
-const apple = dados.itens.filter((i) => i.marca === 'Apple');
+const apple = dados.itens.filter((i) => i.marca === 'Apple' && categoria(i) === 'celular');
+const categoriasTodas = Object.keys(CATEGORIAS).filter((c) => dados.itens.some((i) => categoria(i) === c));
+const nomesCat = categoriasTodas.map((c, i) => (i ? CATEGORIAS[c][1].toLowerCase() : CATEGORIAS[c][1]));
 const menor = (lista) => brl(Math.min(...lista.map((i) => i.preco)));
 const ordemTodas = (a, b) => (a === 'Apple' ? -1 : b === 'Apple' ? 1 : dados.itens.filter((i) => i.marca === b).length - dados.itens.filter((i) => i.marca === a).length);
 const marcasTodas = [...new Set(dados.itens.map((i) => i.marca))].sort(ordemTodas);
 const paginas = [
   {
     caminho: '/produtos/', itens: dados.itens, mostrarMarca: true,
-    titulo: `Celulares novos e seminovos: ${marcasTodas.join(', ')} | Gabriel Felipe`,
-    h1: 'Celulares. <span>Novos e seminovos.</span>',
+    titulo: `${juntar(nomesCat)} novos e seminovos: ${marcasTodas.join(', ')} | Gabriel Felipe`,
+    h1: `${juntar(nomesCat)}. <span>Novos e seminovos.</span>`,
     sub: `${marcasTodas.join(', ')}. Em até 18x no cartão.`,
-    descricao: `Preços de celulares novos e seminovos (${marcasTodas.join(', ')}), a partir de ${menor(dados.itens)}, em 12x ou até 18x. Escolha a marca, a memória e compre pelo WhatsApp.`,
+    descricao: `Preços de ${juntar(nomesCat).toLowerCase()} novos e seminovos (${marcasTodas.join(', ')}), a partir de ${menor(dados.itens)}, em 12x ou até 18x. Escolha a marca, a memória e compre pelo WhatsApp.`,
   },
   {
     caminho: '/iphone/', itens: apple, mostrarMarca: false,
     titulo: 'iPhone novo e seminovo: preços atualizados | Gabriel Felipe',
     h1: 'iPhone. <span>Novo e seminovo.</span>',
     sub: 'Do iPhone 11 ao iPhone 18 Pro Max e iPhone Duo. Em até 18x no cartão.',
-    descricao: `Preços de iPhone novo e seminovo (bateria em torno de ${dados.bateriaSeminovo}%), a partir de ${menor(apple)}, em 12x ou até 18x. Escolha o modelo e a memória e compre pelo WhatsApp.`,
+    descricao: `Preços de iPhone novo e seminovo, a partir de ${menor(apple)}, em 12x ou até 18x. Escolha o modelo e a memória e compre pelo WhatsApp.`,
   },
 ];
 for (const p of paginas) {

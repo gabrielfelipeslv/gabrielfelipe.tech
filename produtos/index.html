@@ -39,9 +39,25 @@
   .nav .largura { height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 12px; letter-spacing: -.01em; }
   .nav a { color: var(--texto); opacity: .85; }
   .nav a:hover { opacity: 1; text-decoration: none; }
-  .nav .links { display: flex; gap: 22px; }
+  .nav .largura > a { flex: none; }
+  .nav .links { display: flex; gap: 22px; min-width: 0; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+  .nav .links::-webkit-scrollbar { display: none; }
   .nav [aria-current] { opacity: 1; font-weight: 600; }
 
+  .banner { background: radial-gradient(ellipse 70% 60% at 50% 105%, #3a2030 0%, #120c12 45%, #000 75%); color: #f5f5f7; overflow: hidden; }
+  .banner .largura { padding-block: 44px 34px; text-align: center; }
+  .chamada { margin: 0; font-size: clamp(30px, 5.5vw, 48px); line-height: 1.08; font-weight: 600; letter-spacing: -.015em; }
+  .chamada span { background: linear-gradient(90deg, #f5a05f, #d8698c 55%, #9a8cf2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .apoio { margin: 8px 0 0; color: #a1a1a6; font-size: 17px; }
+  .apoio .ver { color: #2997ff; white-space: nowrap; }
+  .vitrine { list-style: none; margin: 30px auto 0; padding: 0; max-width: 960px; display: grid; grid-template-columns: repeat(var(--n), 1fr); gap: 12px; }
+  .vitrine a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: inherit; }
+  .vitrine a:hover { text-decoration: none; }
+  .vitrine img { width: 100%; max-width: 210px; height: auto; aspect-ratio: 1; object-fit: contain; margin-bottom: 10px; filter: drop-shadow(0 20px 28px rgba(0,0,0,.7)); transition: transform .35s ease; }
+  .vitrine a:hover img, .vitrine a:focus-visible img { transform: translateY(-6px) scale(1.03); }
+  .vitrine strong { font-size: 15px; font-weight: 600; }
+  .vitrine small { font-size: 13px; color: #a1a1a6; }
+  .vitrine a:hover small { color: #2997ff; }
   .cabeca .largura { padding-block: 44px 24px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px; }
   h1 { margin: 0; font-size: clamp(32px, 6vw, 48px); line-height: 1.08; font-weight: 600; letter-spacing: -.015em; }
   h1 span { color: var(--texto-2); }
@@ -85,7 +101,6 @@
   .valor { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
   .valor[hidden] { display: none; }
   .estado { font-size: 12px; color: var(--texto-2); font-weight: 600; }
-  .nota { font-weight: 400; color: var(--texto-3); }
   .preco { font-size: 17px; font-weight: 600; white-space: nowrap; }
   .apartir { font-weight: 400; color: var(--texto-3); }
   .parcela { font-size: 12px; color: var(--texto-2); white-space: nowrap; }
@@ -101,6 +116,7 @@
   .rodape { background: var(--fundo); }
   .rodape .largura { padding-block: 18px 34px; font-size: 12px; color: var(--texto-3); }
   @media (max-width: 640px) {
+    .nav .links { gap: 16px; }
     .filtros { position: static; }
     .filtros .largura { gap: 8px; }
     .segmento { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
@@ -108,6 +124,13 @@
     .cartao { padding: 22px 20px 20px; }
     .valores.n3 { grid-template-columns: 1fr 1fr; }
     .foto { max-width: 150px; margin-bottom: 8px; }
+    .banner .largura { padding-block: 32px 26px; }
+    .apoio { font-size: 15px; }
+    .apoio .ver { display: block; margin-top: 4px; }
+    .vitrine { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 22px -22px 0; padding: 0 22px; gap: 6px; }
+    .vitrine::-webkit-scrollbar { display: none; }
+    .vitrine li { flex: 0 0 42%; scroll-snap-align: center; }
+    .vitrine img { max-width: 150px; margin-bottom: 6px; }
   }
 </style>
 </head>
@@ -118,10 +141,32 @@
     <span class="links">
       <a href="/produtos/" aria-current="page">Todos os produtos</a>
       <a href="/iphone/">iPhone</a>
+      
       <a href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20os%20pre%C3%A7os%20no%20site." target="_blank" rel="noopener">WhatsApp</a>
     </span>
   </div>
 </nav>
+
+<section class="banner" aria-label="Lançamentos">
+  <div class="largura">
+    <p class="chamada">Os <span>lançamentos</span> do iPhone.</p>
+    <p class="apoio">Novos e seminovos, em até 18x no cartão. <a class="ver" href="/iphone/">Ver todos os iPhones ›</a></p>
+    <ul class="vitrine" style="--n:4">
+      <li><a href="#apple-iphone-duo" data-cartao="apple-iphone-duo">
+        <img src="/produtos/fotos/iphone-duo.webp" alt="iPhone Duo" width="220" height="220" fetchpriority="high" decoding="async">
+        <strong>iPhone Duo</strong><small>a partir de R$ 15.950,00</small></a></li>
+      <li><a href="#apple-iphone-18-pro-max" data-cartao="apple-iphone-18-pro-max">
+        <img src="/produtos/fotos/iphone-18-pro-max.webp" alt="iPhone 18 Pro Max" width="220" height="220" fetchpriority="high" decoding="async">
+        <strong>iPhone 18 Pro Max</strong><small>a partir de R$ 9.458,90</small></a></li>
+      <li><a href="#apple-iphone-17-pro-max" data-cartao="apple-iphone-17-pro-max">
+        <img src="/produtos/fotos/iphone-17-pro-max.webp" alt="iPhone 17 Pro Max" width="220" height="220" loading="lazy" decoding="async">
+        <strong>iPhone 17 Pro Max</strong><small>a partir de R$ 7.093,90</small></a></li>
+      <li><a href="#apple-iphone-17" data-cartao="apple-iphone-17">
+        <img src="/produtos/fotos/iphone-17.webp" alt="iPhone 17" width="220" height="220" loading="lazy" decoding="async">
+        <strong>iPhone 17</strong><small>a partir de R$ 5.993,90</small></a></li>
+    </ul>
+  </div>
+</section>
 
 <header class="cabeca">
   <div class="largura">
@@ -132,6 +177,7 @@
 
 <div class="filtros" role="search">
   <div class="largura">
+    
     <div class="segmento" role="group" aria-label="Marca">
         <button type="button" data-filtro="marca" data-valor="" aria-pressed="true">Todas</button><button type="button" data-filtro="marca" data-valor="Apple" aria-pressed="false">Apple</button><button type="button" data-filtro="marca" data-valor="Xiaomi" aria-pressed="false">Xiaomi</button><button type="button" data-filtro="marca" data-valor="Realme" aria-pressed="false">Realme</button>
       </div>
@@ -157,9 +203,9 @@
   <div class="largura">
     <p class="contagem" id="contagem">42 modelos</p>
     <div class="grade" id="grade">
-      <article class="cartao" id="apple-iphone-duo" data-marca="Apple" data-modelo="iPhone Duo"
+      <article class="cartao" id="apple-iphone-duo" data-categoria="celular" data-marca="Apple" data-modelo="iPhone Duo"
         data-geracao="19" data-menor="15950" data-pronta="0"
-        data-busca="apple iphone duo 256 gb night sky" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:15950,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Night Sky&quot;:15950},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone duo 256 gb night sky" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:15950,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Night Sky&quot;:15950},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-duo.webp" alt="iPhone Duo" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -181,9 +227,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%20Duo." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-18-pro-max" data-marca="Apple" data-modelo="iPhone 18 Pro Max"
+      <article class="cartao" id="apple-iphone-18-pro-max" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 18 Pro Max"
         data-geracao="18" data-menor="9458.9" data-pronta="0"
-        data-busca="apple iphone 18 pro max 256 gb 512 gb 2 tb azul preto glacial bordô silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9845,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:9889,&quot;Preto&quot;:9845,&quot;Glacial&quot;:9889,&quot;Bordô&quot;:10109,&quot;Silver&quot;:10109},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:9458.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Preto&quot;:9458.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:11825,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Bordô&quot;:11825,&quot;Glacial&quot;:11825},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;2 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:18150,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Glacial&quot;:18150},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone 18 pro max 256 gb 512 gb 2 tb azul preto glacial bordô silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9845,&quot;aPartir&quot;:true,&quot;c&quot;:{&quot;Azul&quot;:9889,&quot;Preto&quot;:9845,&quot;Glacial&quot;:9889,&quot;Bordô&quot;:10109,&quot;Silver&quot;:10109},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:9458.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:9458.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:11825,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Bordô&quot;:11825,&quot;Glacial&quot;:11825},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;2 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:18150,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Glacial&quot;:18150},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-18-pro-max.webp" alt="iPhone 18 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -203,16 +249,16 @@
             <span class="parcela">ou 12x de R$ 984,50</span>
           </div>
           <div class="valor" data-condicao="seminovo" data-preco="9458.9">
-            <span class="estado">Seminovo <span class="nota">A+</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 9.458,90</span>
             <span class="parcela">ou 12x de R$ 945,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2018%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-18-pro" data-marca="Apple" data-modelo="iPhone 18 Pro"
+      <article class="cartao" id="apple-iphone-18-pro" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 18 Pro"
         data-geracao="18" data-menor="9339" data-pronta="0"
-        data-busca="apple iphone 18 pro 256 gb bordô preto glacial" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9339,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Bordô&quot;:9339,&quot;Preto&quot;:9339,&quot;Glacial&quot;:9339},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone 18 pro 256 gb bordô preto glacial" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9339,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Bordô&quot;:9339,&quot;Preto&quot;:9339,&quot;Glacial&quot;:9339},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-18-pro.webp" alt="iPhone 18 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -234,9 +280,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2018%20Pro." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-17-pro-max" data-marca="Apple" data-modelo="iPhone 17 Pro Max"
+      <article class="cartao" id="apple-iphone-17-pro-max" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 17 Pro Max"
         data-geracao="17" data-menor="7093.9" data-pronta="0"
-        data-busca="apple iphone 17 pro max 256 gb 512 gb laranja azul silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:8525,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Laranja&quot;:8525,&quot;Azul&quot;:8569,&quot;Silver&quot;:8855},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:7093.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Laranja&quot;:7093.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9955,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:9955,&quot;Silver&quot;:9955},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:8237.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Azul&quot;:8237.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 17 pro max 256 gb 512 gb laranja azul silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:8525,&quot;aPartir&quot;:true,&quot;c&quot;:{&quot;Laranja&quot;:8525,&quot;Azul&quot;:8569,&quot;Silver&quot;:8855},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:7093.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Laranja&quot;:7093.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9955,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:9955,&quot;Silver&quot;:9955},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:8237.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:8237.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-17-pro-max.webp" alt="iPhone 17 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -256,16 +302,16 @@
             <span class="parcela">ou 12x de R$ 852,50</span>
           </div>
           <div class="valor" data-condicao="seminovo" data-preco="7093.9">
-            <span class="estado">Seminovo <span class="nota">A+</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 7.093,90</span>
             <span class="parcela">ou 12x de R$ 709,39</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2017%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-17-pro" data-marca="Apple" data-modelo="iPhone 17 Pro"
+      <article class="cartao" id="apple-iphone-17-pro" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 17 Pro"
         data-geracao="17" data-menor="7588.9" data-pronta="0"
-        data-busca="apple iphone 17 pro 256 gb laranja silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:7643.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Laranja&quot;:7643.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:7588.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Silver&quot;:7588.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 17 pro 256 gb laranja silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:7643.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Laranja&quot;:7643.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:7588.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Silver&quot;:7588.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-17-pro.webp" alt="iPhone 17 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -285,16 +331,16 @@
             <span class="parcela">ou 12x de R$ 764,39</span>
           </div>
           <div class="valor" data-condicao="seminovo" data-preco="7588.9">
-            <span class="estado">Seminovo <span class="nota">A+</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 7.588,90</span>
             <span class="parcela">ou 12x de R$ 758,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2017%20Pro." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-17" data-marca="Apple" data-modelo="iPhone 17"
+      <article class="cartao" id="apple-iphone-17" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 17"
         data-geracao="17" data-menor="5993.9" data-pronta="0"
-        data-busca="apple iphone 17 256 gb azul branco preto" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:5993.9,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:5993.9,&quot;Branco&quot;:6059.9,&quot;Preto&quot;:6059.9},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone 17 256 gb azul branco preto" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:5993.9,&quot;aPartir&quot;:true,&quot;c&quot;:{&quot;Azul&quot;:5993.9,&quot;Branco&quot;:6059.9,&quot;Preto&quot;:6059.9},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-17.webp" alt="iPhone 17" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -316,9 +362,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2017." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-16-pro-max" data-marca="Apple" data-modelo="iPhone 16 Pro Max"
+      <article class="cartao" id="apple-iphone-16-pro-max" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 16 Pro Max"
         data-geracao="16" data-menor="5388.9" data-pronta="0"
-        data-busca="apple iphone 16 pro max 256 gb natural" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:5388.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Natural&quot;:5388.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 16 pro max 256 gb natural" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:5388.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Natural&quot;:5388.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-16-pro-max.webp" alt="iPhone 16 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -333,16 +379,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="5388.9">
-            <span class="estado">Seminovo <span class="nota">A+</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 5.388,90</span>
             <span class="parcela">ou 12x de R$ 538,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2016%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-16-pro" data-marca="Apple" data-modelo="iPhone 16 Pro"
+      <article class="cartao" id="apple-iphone-16-pro" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 16 Pro"
         data-geracao="16" data-menor="4563.9" data-pronta="0"
-        data-busca="apple iphone 16 pro 128 gb 256 gb preto desert natural" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4563.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Preto&quot;:4563.9,&quot;Desert&quot;:4563.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4838.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Preto&quot;:4838.9,&quot;Natural&quot;:4838.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 16 pro 128 gb 256 gb preto desert natural" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4563.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:4563.9,&quot;Desert&quot;:4563.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4838.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:4838.9,&quot;Natural&quot;:4838.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-16-pro.webp" alt="iPhone 16 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -357,16 +403,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="4563.9">
-            <span class="estado">Seminovo <span class="nota">A+</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 4.563,90</span>
             <span class="parcela">ou 12x de R$ 456,39</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2016%20Pro." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-16" data-marca="Apple" data-modelo="iPhone 16"
+      <article class="cartao" id="apple-iphone-16" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 16"
         data-geracao="16" data-menor="3848.9" data-pronta="0"
-        data-busca="apple iphone 16 128 gb preto branco azul verde" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4684.9,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:4684.9,&quot;Branco&quot;:5049},&quot;x&quot;:[&quot;Preto&quot;]},&quot;s&quot;:{&quot;preco&quot;:3848.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Azul&quot;:3848.9,&quot;Verde&quot;:3848.9,&quot;Preto&quot;:3848.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 16 128 gb preto branco azul verde" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4684.9,&quot;aPartir&quot;:true,&quot;c&quot;:{&quot;Preto&quot;:4684.9,&quot;Branco&quot;:5049},&quot;x&quot;:[&quot;Preto&quot;]},&quot;s&quot;:{&quot;preco&quot;:3848.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:3848.9,&quot;Verde&quot;:3848.9,&quot;Preto&quot;:3848.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-16.webp" alt="iPhone 16" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -386,16 +432,16 @@
             <span class="parcela">ou 12x de R$ 468,49</span>
           </div>
           <div class="valor" data-condicao="seminovo" data-preco="3848.9">
-            <span class="estado">Seminovo <span class="nota">A+</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 3.848,90</span>
             <span class="parcela">ou 12x de R$ 384,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2016." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-16-plus" data-marca="Apple" data-modelo="iPhone 16 Plus"
+      <article class="cartao" id="apple-iphone-16-plus" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 16 Plus"
         data-geracao="16" data-menor="4134.9" data-pronta="0"
-        data-busca="apple iphone 16 plus 128 gb azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4134.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Azul&quot;:4134.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 16 plus 128 gb azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4134.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:4134.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-16-plus.webp" alt="iPhone 16 Plus" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -410,16 +456,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="4134.9">
-            <span class="estado">Seminovo <span class="nota">A+</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 4.134,90</span>
             <span class="parcela">ou 12x de R$ 413,49</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2016%20Plus." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-15-pro-max" data-marca="Apple" data-modelo="iPhone 15 Pro Max"
+      <article class="cartao" id="apple-iphone-15-pro-max" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 15 Pro Max"
         data-geracao="15" data-menor="4398.9" data-pronta="0"
-        data-busca="apple iphone 15 pro max 256 gb 512 gb 1 tb azul preto natural" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4398.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:4398.9,&quot;Preto&quot;:4398.9,&quot;Natural&quot;:4398.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4585.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:4585.9,&quot;Preto&quot;:4585.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;1 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4805.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:4805.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 15 pro max 256 gb 512 gb 1 tb azul preto natural" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4398.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:4398.9,&quot;Preto&quot;:4398.9,&quot;Natural&quot;:4398.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4585.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:4585.9,&quot;Preto&quot;:4585.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;1 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4805.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:4805.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-15-pro-max.webp" alt="iPhone 15 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -434,16 +480,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="4398.9">
-            <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 4.398,90</span>
             <span class="parcela">ou 12x de R$ 439,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2015%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-15-pro" data-marca="Apple" data-modelo="iPhone 15 Pro"
+      <article class="cartao" id="apple-iphone-15-pro" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 15 Pro"
         data-geracao="15" data-menor="3683.9" data-pronta="0"
-        data-busca="apple iphone 15 pro 128 gb 256 gb azul preto silver" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3683.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:3683.9,&quot;Preto&quot;:3683.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3848.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Silver&quot;:3848.9,&quot;Preto&quot;:3848.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 15 pro 128 gb 256 gb azul preto silver" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3683.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:3683.9,&quot;Preto&quot;:3683.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3848.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Silver&quot;:3848.9,&quot;Preto&quot;:3848.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-15-pro.webp" alt="iPhone 15 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -458,16 +504,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="3683.9">
-            <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 3.683,90</span>
             <span class="parcela">ou 12x de R$ 368,39</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2015%20Pro." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-15" data-marca="Apple" data-modelo="iPhone 15"
+      <article class="cartao" id="apple-iphone-15" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 15"
         data-geracao="15" data-menor="2803.9" data-pronta="0"
-        data-busca="apple iphone 15 128 gb 256 gb azul preto rosa verde" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4343.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:4343.9,&quot;Preto&quot;:4343.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:2803.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Rosa&quot;:2803.9,&quot;Verde&quot;:2803.9,&quot;Preto&quot;:2803.9,&quot;Azul&quot;:2803.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4508.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:4508.9,&quot;Preto&quot;:4508.9},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone 15 128 gb 256 gb azul preto rosa verde" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4343.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:4343.9,&quot;Preto&quot;:4343.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:2803.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Rosa&quot;:2803.9,&quot;Verde&quot;:2803.9,&quot;Preto&quot;:2803.9,&quot;Azul&quot;:2803.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4508.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:4508.9,&quot;Preto&quot;:4508.9},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-15.webp" alt="iPhone 15" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -487,16 +533,16 @@
             <span class="parcela">ou 12x de R$ 434,39</span>
           </div>
           <div class="valor" data-condicao="seminovo" data-preco="2803.9">
-            <span class="estado">Seminovo <span class="nota">A</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 2.803,90</span>
             <span class="parcela">ou 12x de R$ 280,39</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2015." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-15-plus" data-marca="Apple" data-modelo="iPhone 15 Plus"
+      <article class="cartao" id="apple-iphone-15-plus" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 15 Plus"
         data-geracao="15" data-menor="3078.9" data-pronta="0"
-        data-busca="apple iphone 15 plus 128 gb preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3078.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3078.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 15 plus 128 gb preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3078.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:3078.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-15-plus.webp" alt="iPhone 15 Plus" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -511,16 +557,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="3078.9">
-            <span class="estado">Seminovo <span class="nota">A</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 3.078,90</span>
             <span class="parcela">ou 12x de R$ 307,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2015%20Plus." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-14-pro-max" data-marca="Apple" data-modelo="iPhone 14 Pro Max"
+      <article class="cartao" id="apple-iphone-14-pro-max" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 14 Pro Max"
         data-geracao="14" data-menor="3463.9" data-pronta="0"
-        data-busca="apple iphone 14 pro max 128 gb 256 gb 512 gb 1 tb roxo gold preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3463.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Roxo&quot;:3463.9,&quot;Gold&quot;:3463.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3661.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Roxo&quot;:3661.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3870.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3870.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;1 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4068.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:4068.9,&quot;Roxo&quot;:4068.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 14 pro max 128 gb 256 gb 512 gb 1 tb roxo gold preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3463.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Roxo&quot;:3463.9,&quot;Gold&quot;:3463.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3661.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Roxo&quot;:3661.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3870.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:3870.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;1 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4068.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:4068.9,&quot;Roxo&quot;:4068.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-14-pro-max.webp" alt="iPhone 14 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -535,16 +581,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="3463.9">
-            <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 3.463,90</span>
             <span class="parcela">ou 12x de R$ 346,39</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2014%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-14-pro" data-marca="Apple" data-modelo="iPhone 14 Pro"
+      <article class="cartao" id="apple-iphone-14-pro" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 14 Pro"
         data-geracao="14" data-menor="3023.9" data-pronta="0"
-        data-busca="apple iphone 14 pro 128 gb 256 gb 512 gb roxo preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3023.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Roxo&quot;:3023.9,&quot;Preto&quot;:3023.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3243.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3243.9,&quot;Roxo&quot;:3243.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3441.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3441.9,&quot;Roxo&quot;:3441.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 14 pro 128 gb 256 gb 512 gb roxo preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3023.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Roxo&quot;:3023.9,&quot;Preto&quot;:3023.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3243.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:3243.9,&quot;Roxo&quot;:3243.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3441.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:3441.9,&quot;Roxo&quot;:3441.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-14-pro.webp" alt="iPhone 14 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -559,16 +605,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="3023.9">
-            <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 3.023,90</span>
             <span class="parcela">ou 12x de R$ 302,39</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2014%20Pro." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-14" data-marca="Apple" data-modelo="iPhone 14"
+      <article class="cartao" id="apple-iphone-14" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 14"
         data-geracao="14" data-menor="2198.9" data-pronta="0"
-        data-busca="apple iphone 14 128 gb 256 gb lilás azul vermelho preto branco" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2198.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Lilás&quot;:2198.9,&quot;Azul&quot;:2198.9,&quot;Vermelho&quot;:2198.9,&quot;Preto&quot;:2198.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4398.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Branco&quot;:4398.9,&quot;Preto&quot;:4398.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:2418.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Preto&quot;:2418.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 14 128 gb 256 gb lilás azul vermelho preto branco" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2198.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Lilás&quot;:2198.9,&quot;Azul&quot;:2198.9,&quot;Vermelho&quot;:2198.9,&quot;Preto&quot;:2198.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4398.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Branco&quot;:4398.9,&quot;Preto&quot;:4398.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:2418.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:2418.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-14.webp" alt="iPhone 14" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -588,16 +634,16 @@
             <span class="parcela">ou 12x de R$ 439,89</span>
           </div>
           <div class="valor" data-condicao="seminovo" data-preco="2198.9">
-            <span class="estado">Seminovo <span class="nota">A+</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 2.198,90</span>
             <span class="parcela">ou 12x de R$ 219,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2014." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-14-plus" data-marca="Apple" data-modelo="iPhone 14 Plus"
+      <article class="cartao" id="apple-iphone-14-plus" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 14 Plus"
         data-geracao="14" data-menor="2418.9" data-pronta="0"
-        data-busca="apple iphone 14 plus 128 gb preto lilás azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2418.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:2418.9,&quot;Lilás&quot;:2418.9,&quot;Azul&quot;:2418.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 14 plus 128 gb preto lilás azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2418.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:2418.9,&quot;Lilás&quot;:2418.9,&quot;Azul&quot;:2418.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-14-plus.webp" alt="iPhone 14 Plus" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -612,16 +658,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="2418.9">
-            <span class="estado">Seminovo <span class="nota">A</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 2.418,90</span>
             <span class="parcela">ou 12x de R$ 241,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2014%20Plus." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-13-pro-max" data-marca="Apple" data-modelo="iPhone 13 Pro Max"
+      <article class="cartao" id="apple-iphone-13-pro-max" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 13 Pro Max"
         data-geracao="13" data-menor="2935.9" data-pronta="0"
-        data-busca="apple iphone 13 pro max 128 gb 512 gb preto azul verde" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2935.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:2935.9,&quot;Azul&quot;:2935.9,&quot;Verde&quot;:2935.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3408.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3408.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 13 pro max 128 gb 512 gb preto azul verde" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2935.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:2935.9,&quot;Azul&quot;:2935.9,&quot;Verde&quot;:2935.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3408.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:3408.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-13-pro-max.webp" alt="iPhone 13 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -636,16 +682,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="2935.9">
-            <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 2.935,90</span>
             <span class="parcela">ou 12x de R$ 293,59</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2013%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-13-pro" data-marca="Apple" data-modelo="iPhone 13 Pro"
+      <article class="cartao" id="apple-iphone-13-pro" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 13 Pro"
         data-geracao="13" data-menor="2605.9" data-pronta="0"
-        data-busca="apple iphone 13 pro 128 gb 256 gb 512 gb preto silver azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:3738.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:3738.9,&quot;Silver&quot;:3738.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:2605.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Silver&quot;:2605.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2638.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2638.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2968.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2968.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 13 pro 128 gb 256 gb 512 gb preto silver azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:3738.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:3738.9,&quot;Silver&quot;:3738.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:2605.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Silver&quot;:2605.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2638.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:2638.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2968.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:2968.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-13-pro.webp" alt="iPhone 13 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -665,16 +711,16 @@
             <span class="parcela">ou 12x de R$ 373,89</span>
           </div>
           <div class="valor" data-condicao="seminovo" data-preco="2605.9">
-            <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 2.605,90</span>
             <span class="parcela">ou 12x de R$ 260,59</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2013%20Pro." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-13" data-marca="Apple" data-modelo="iPhone 13"
+      <article class="cartao" id="apple-iphone-13" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 13"
         data-geracao="13" data-menor="1945.9" data-pronta="0"
-        data-busca="apple iphone 13 128 gb 256 gb azul preto vermelho branco rosa" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1945.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:1945.9,&quot;Preto&quot;:1945.9,&quot;Vermelho&quot;:1945.9,&quot;Branco&quot;:1945.9,&quot;Rosa&quot;:1945.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2165.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2165.9,&quot;Preto&quot;:2165.9,&quot;Vermelho&quot;:2165.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 13 128 gb 256 gb azul preto vermelho branco rosa" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1945.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:1945.9,&quot;Preto&quot;:1945.9,&quot;Vermelho&quot;:1945.9,&quot;Branco&quot;:1945.9,&quot;Rosa&quot;:1945.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2165.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:2165.9,&quot;Preto&quot;:2165.9,&quot;Vermelho&quot;:2165.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-13.webp" alt="iPhone 13" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -689,16 +735,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="1945.9">
-            <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 1.945,90</span>
             <span class="parcela">ou 12x de R$ 194,59</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2013." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-12-pro-max" data-marca="Apple" data-modelo="iPhone 12 Pro Max"
+      <article class="cartao" id="apple-iphone-12-pro-max" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 12 Pro Max"
         data-geracao="12" data-menor="2308.9" data-pronta="0"
-        data-busca="apple iphone 12 pro max 128 gb 256 gb azul branco gold preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2308.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2308.9,&quot;Branco&quot;:2308.9,&quot;Gold&quot;:2308.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2528.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:2528.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 12 pro max 128 gb 256 gb azul branco gold preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2308.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:2308.9,&quot;Branco&quot;:2308.9,&quot;Gold&quot;:2308.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2528.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:2528.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-12-pro-max.webp" alt="iPhone 12 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -713,16 +759,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="2308.9">
-            <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
+            <span class="estado">Seminovo <span class="apartir">· a partir de</span></span>
             <span class="preco">R$ 2.308,90</span>
             <span class="parcela">ou 12x de R$ 230,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2012%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-12-pro" data-marca="Apple" data-modelo="iPhone 12 Pro"
+      <article class="cartao" id="apple-iphone-12-pro" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 12 Pro"
         data-geracao="12" data-menor="2187.9" data-pronta="0"
-        data-busca="apple iphone 12 pro 256 gb azul" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2187.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2187.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 12 pro 256 gb azul" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2187.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:2187.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-12-pro.webp" alt="iPhone 12 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -737,16 +783,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="2187.9">
-            <span class="estado">Seminovo <span class="nota">A</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 2.187,90</span>
             <span class="parcela">ou 12x de R$ 218,79</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2012%20Pro." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-12" data-marca="Apple" data-modelo="iPhone 12"
+      <article class="cartao" id="apple-iphone-12" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 12"
         data-geracao="12" data-menor="1527.9" data-pronta="0"
-        data-busca="apple iphone 12 128 gb lilás vermelho" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1527.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A-&quot;,&quot;c&quot;:{&quot;Lilás&quot;:1527.9,&quot;Vermelho&quot;:1527.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 12 128 gb lilás vermelho" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1527.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Lilás&quot;:1527.9,&quot;Vermelho&quot;:1527.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-12.webp" alt="iPhone 12" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -761,16 +807,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="1527.9">
-            <span class="estado">Seminovo <span class="nota">A-</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 1.527,90</span>
             <span class="parcela">ou 12x de R$ 152,79</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2012." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-11-pro-max" data-marca="Apple" data-modelo="iPhone 11 Pro Max"
+      <article class="cartao" id="apple-iphone-11-pro-max" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 11 Pro Max"
         data-geracao="11" data-menor="1593.9" data-pronta="0"
-        data-busca="apple iphone 11 pro max 64 gb gold verde preto" data-variantes="[{&quot;m&quot;:&quot;64 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1593.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Gold&quot;:1593.9,&quot;Verde&quot;:1593.9,&quot;Preto&quot;:1593.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 11 pro max 64 gb gold verde preto" data-variantes="[{&quot;m&quot;:&quot;64 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1593.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Gold&quot;:1593.9,&quot;Verde&quot;:1593.9,&quot;Preto&quot;:1593.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-11-pro-max.webp" alt="iPhone 11 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -785,16 +831,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="1593.9">
-            <span class="estado">Seminovo <span class="nota">A</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 1.593,90</span>
             <span class="parcela">ou 12x de R$ 159,39</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2011%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="apple-iphone-11-pro" data-marca="Apple" data-modelo="iPhone 11 Pro"
+      <article class="cartao" id="apple-iphone-11-pro" data-categoria="celular" data-marca="Apple" data-modelo="iPhone 11 Pro"
         data-geracao="11" data-menor="1428.9" data-pronta="0"
-        data-busca="apple iphone 11 pro 64 gb preto verde" data-variantes="[{&quot;m&quot;:&quot;64 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1428.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:1428.9,&quot;Verde&quot;:1428.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
+        data-busca="apple iphone 11 pro 64 gb preto verde" data-variantes="[{&quot;m&quot;:&quot;64 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1428.9,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1428.9,&quot;Verde&quot;:1428.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-11-pro.webp" alt="iPhone 11 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -809,16 +855,16 @@
         </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="1428.9">
-            <span class="estado">Seminovo <span class="nota">A</span></span>
+            <span class="estado">Seminovo</span>
             <span class="preco">R$ 1.428,90</span>
             <span class="parcela">ou 12x de R$ 142,89</span>
           </div>
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20iPhone%2011%20Pro." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="realme-realme-note-80" data-marca="Realme" data-modelo="Realme Note 80"
+      <article class="cartao" id="realme-realme-note-80" data-categoria="celular" data-marca="Realme" data-modelo="Realme Note 80"
         data-geracao="80" data-menor="1248.5" data-pronta="0"
-        data-busca="realme realme note 80 128 gb preto azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1248.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1248.5,&quot;Azul&quot;:1248.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="realme realme note 80 128 gb preto azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1248.5,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1248.5,&quot;Azul&quot;:1248.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/realme-note-80.webp" alt="Realme Note 80" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Realme</span>
@@ -840,9 +886,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Realme%20Note%2080." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-poco-c85" data-marca="Xiaomi" data-modelo="Poco C85"
+      <article class="cartao" id="xiaomi-poco-c85" data-categoria="celular" data-marca="Xiaomi" data-modelo="Poco C85"
         data-geracao="85" data-menor="1133" data-pronta="0"
-        data-busca="xiaomi poco c85 128 gb 256 gb preto verde lilás" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;6 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1133,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1133,&quot;Verde&quot;:1133,&quot;Lilás&quot;:1133},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1397,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1397},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco c85 128 gb 256 gb preto verde lilás" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;6 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1133,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1133,&quot;Verde&quot;:1133,&quot;Lilás&quot;:1133},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1397,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1397},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-c85.webp" alt="Poco C85" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -864,9 +910,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Poco%20C85." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-poco-c81-pro" data-marca="Xiaomi" data-modelo="Poco C81 Pro"
+      <article class="cartao" id="xiaomi-poco-c81-pro" data-categoria="celular" data-marca="Xiaomi" data-modelo="Poco C81 Pro"
         data-geracao="81" data-menor="1248.5" data-pronta="0"
-        data-busca="xiaomi poco c81 pro 256 gb dourado" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1248.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Dourado&quot;:1248.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco c81 pro 256 gb dourado" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1248.5,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Dourado&quot;:1248.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-c81-pro.webp" alt="Poco C81 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -888,9 +934,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Poco%20C81%20Pro." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-poco-c71" data-marca="Xiaomi" data-modelo="Poco C71"
+      <article class="cartao" id="xiaomi-poco-c71" data-categoria="celular" data-marca="Xiaomi" data-modelo="Poco C71"
         data-geracao="71" data-menor="874.5" data-pronta="0"
-        data-busca="xiaomi poco c71 128 gb preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:874.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:874.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco c71 128 gb preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:874.5,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:874.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-c71.webp" alt="Poco C71" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -912,9 +958,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Poco%20C71." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-redmi-note-17-pro-max" data-marca="Xiaomi" data-modelo="Redmi Note 17 Pro Max"
+      <article class="cartao" id="xiaomi-redmi-note-17-pro-max" data-categoria="celular" data-marca="Xiaomi" data-modelo="Redmi Note 17 Pro Max"
         data-geracao="17" data-menor="3168" data-pronta="0"
-        data-busca="xiaomi redmi note 17 pro max 512 gb preto branco" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3168,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:3168,&quot;Branco&quot;:3168},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 17 pro max 512 gb preto branco" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3168,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:3168,&quot;Branco&quot;:3168},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/redmi-note-17-pro-max.webp" alt="Redmi Note 17 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -936,9 +982,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Redmi%20Note%2017%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-redmi-note-17-pro-5g" data-marca="Xiaomi" data-modelo="Redmi Note 17 Pro 5G"
+      <article class="cartao" id="xiaomi-redmi-note-17-pro-5g" data-categoria="celular" data-marca="Xiaomi" data-modelo="Redmi Note 17 Pro 5G"
         data-geracao="17" data-menor="2398" data-pronta="0"
-        data-busca="xiaomi redmi note 17 pro 5g 256 gb preto" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2398,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:2398},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 17 pro 5g 256 gb preto" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2398,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:2398},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/redmi-note-17-pro-5g.webp" alt="Redmi Note 17 Pro 5G" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -960,9 +1006,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Redmi%20Note%2017%20Pro%205G." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-redmi-17" data-marca="Xiaomi" data-modelo="Redmi 17"
+      <article class="cartao" id="xiaomi-redmi-17" data-categoria="celular" data-marca="Xiaomi" data-modelo="Redmi 17"
         data-geracao="17" data-menor="1276" data-pronta="0"
-        data-busca="xiaomi redmi 17 128 gb 256 gb preto azul lilás" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1276,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1276,&quot;Azul&quot;:1276,&quot;Lilás&quot;:1276},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;6 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1639,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1639,&quot;Azul&quot;:1639},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi 17 128 gb 256 gb preto azul lilás" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1276,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1276,&quot;Azul&quot;:1276,&quot;Lilás&quot;:1276},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;6 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1639,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1639,&quot;Azul&quot;:1639},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/redmi-17.webp" alt="Redmi 17" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -984,9 +1030,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Redmi%2017." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-redmi-note-17" data-marca="Xiaomi" data-modelo="Redmi Note 17"
+      <article class="cartao" id="xiaomi-redmi-note-17" data-categoria="celular" data-marca="Xiaomi" data-modelo="Redmi Note 17"
         data-geracao="17" data-menor="1782" data-pronta="0"
-        data-busca="xiaomi redmi note 17 256 gb preto azul verde" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1782,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1782,&quot;Azul&quot;:1782,&quot;Verde&quot;:1782},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 17 256 gb preto azul verde" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1782,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1782,&quot;Azul&quot;:1782,&quot;Verde&quot;:1782},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/redmi-note-17.webp" alt="Redmi Note 17" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1008,9 +1054,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Redmi%20Note%2017." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-redmi-note-15-pro-5g" data-marca="Xiaomi" data-modelo="Redmi Note 15 Pro 5G"
+      <article class="cartao" id="xiaomi-redmi-note-15-pro-5g" data-categoria="celular" data-marca="Xiaomi" data-modelo="Redmi Note 15 Pro 5G"
         data-geracao="15" data-menor="2442" data-pronta="0"
-        data-busca="xiaomi redmi note 15 pro 5g 512 gb preto" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2442,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:2442},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 15 pro 5g 512 gb preto" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2442,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:2442},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/redmi-note-15-pro-5g.webp" alt="Redmi Note 15 Pro 5G" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1032,9 +1078,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Redmi%20Note%2015%20Pro%205G." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-redmi-note-15-pro" data-marca="Xiaomi" data-modelo="Redmi Note 15 Pro+"
+      <article class="cartao" id="xiaomi-redmi-note-15-pro" data-categoria="celular" data-marca="Xiaomi" data-modelo="Redmi Note 15 Pro+"
         data-geracao="15" data-menor="2805" data-pronta="0"
-        data-busca="xiaomi redmi note 15 pro+ 512 gb azul" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2805,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:2805},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 15 pro+ 512 gb azul" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2805,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Azul&quot;:2805},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/redmi-note-15-pro.webp" alt="Redmi Note 15 Pro+" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1056,9 +1102,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Redmi%20Note%2015%20Pro%2B." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-redmi-15c" data-marca="Xiaomi" data-modelo="Redmi 15C"
+      <article class="cartao" id="xiaomi-redmi-15c" data-categoria="celular" data-marca="Xiaomi" data-modelo="Redmi 15C"
         data-geracao="15" data-menor="1072.5" data-pronta="0"
-        data-busca="xiaomi redmi 15c 128 gb 256 gb preto azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1072.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1072.5,&quot;Azul&quot;:1072.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1298,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1298,&quot;Azul&quot;:1298},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi 15c 128 gb 256 gb preto azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1072.5,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1072.5,&quot;Azul&quot;:1072.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1298,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1298,&quot;Azul&quot;:1298},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/redmi-15c.webp" alt="Redmi 15C" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1080,9 +1126,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Redmi%2015C." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-redmi-note-15" data-marca="Xiaomi" data-modelo="Redmi Note 15"
+      <article class="cartao" id="xiaomi-redmi-note-15" data-categoria="celular" data-marca="Xiaomi" data-modelo="Redmi Note 15"
         data-geracao="15" data-menor="1683" data-pronta="0"
-        data-busca="xiaomi redmi note 15 256 gb preto azul" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1683,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1683,&quot;Azul&quot;:1683},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 15 256 gb preto azul" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1683,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1683,&quot;Azul&quot;:1683},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/redmi-note-15.webp" alt="Redmi Note 15" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1104,9 +1150,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Redmi%20Note%2015." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-poco-x8-pro-max" data-marca="Xiaomi" data-modelo="Poco X8 Pro Max"
+      <article class="cartao" id="xiaomi-poco-x8-pro-max" data-categoria="celular" data-marca="Xiaomi" data-modelo="Poco X8 Pro Max"
         data-geracao="8" data-menor="3465" data-pronta="0"
-        data-busca="xiaomi poco x8 pro max 256 gb 512 gb preto branco" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3465,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:3465,&quot;Branco&quot;:3465},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3894,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:3894},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco x8 pro max 256 gb 512 gb preto branco" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3465,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:3465,&quot;Branco&quot;:3465},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3894,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:3894},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-x8-pro-max.webp" alt="Poco X8 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1128,9 +1174,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Poco%20X8%20Pro%20Max." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-poco-m8" data-marca="Xiaomi" data-modelo="Poco M8"
+      <article class="cartao" id="xiaomi-poco-m8" data-categoria="celular" data-marca="Xiaomi" data-modelo="Poco M8"
         data-geracao="8" data-menor="1914" data-pronta="0"
-        data-busca="xiaomi poco m8 512 gb silver" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1914,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Silver&quot;:1914},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco m8 512 gb silver" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1914,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Silver&quot;:1914},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-m8.webp" alt="Poco M8" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1152,9 +1198,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Poco%20M8." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-poco-x8" data-marca="Xiaomi" data-modelo="Poco X8"
+      <article class="cartao" id="xiaomi-poco-x8" data-categoria="celular" data-marca="Xiaomi" data-modelo="Poco X8"
         data-geracao="8" data-menor="2178" data-pronta="0"
-        data-busca="xiaomi poco x8 256 gb preto" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2178,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:2178},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco x8 256 gb preto" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2178,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:2178},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-x8.webp" alt="Poco X8" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1176,9 +1222,9 @@
         </div>
         <a class="comprar" href="https://wa.me/5534992072178?text=Oi%2C%20Gabriel!%20Vi%20no%20site%20e%20quero%20saber%20do%20Poco%20X8." target="_blank" rel="noopener">Comprar</a>
       </article>
-      <article class="cartao" id="xiaomi-poco-m7" data-marca="Xiaomi" data-modelo="Poco M7"
+      <article class="cartao" id="xiaomi-poco-m7" data-categoria="celular" data-marca="Xiaomi" data-modelo="Poco M7"
         data-geracao="7" data-menor="1485" data-pronta="0"
-        data-busca="xiaomi poco m7 256 gb preto silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1485,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1485,&quot;Silver&quot;:1485},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco m7 256 gb preto silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1485,&quot;aPartir&quot;:false,&quot;c&quot;:{&quot;Preto&quot;:1485,&quot;Silver&quot;:1485},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-m7.webp" alt="Poco M7" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1208,7 +1254,7 @@
 <section class="info" aria-label="Como funciona">
   <div class="largura">
     <div><h2>Até 18x no cartão</h2><p>À vista no Pix ou em 12x com parcela de um décimo do valor. Também parcelo em até 18x.</p></div>
-    <div><h2>Seminovos revisados</h2><p>Bateria em torno de 85%. A letra ao lado é a nota de conservação: A+ é a melhor.</p></div>
+    <div><h2>Novo ou seminovo</h2><p>Todo aparelho é novo ou seminovo. Dos seminovos, eu te mostro no WhatsApp as opções disponíveis no dia.</p></div>
     <div><h2>Compra pelo WhatsApp</h2><p>Escolha a memória e a cor no cartão, toque em Comprar e combine a entrega comigo.</p></div>
   </div>
 </section>
@@ -1220,7 +1266,7 @@
   var cartoes = Array.prototype.slice.call(grade.querySelectorAll('.cartao'));
   var busca = document.getElementById('busca'), ordem = document.getElementById('ordem'), memoria = document.getElementById('memoria');
   var contagem = document.getElementById('contagem'), vazio = document.getElementById('vazio');
-  var estado = { marca: '', condicao: '', pronta: '' };
+  var estado = { categoria: '', marca: '', condicao: '', pronta: '' };
   var limpo = function (s) { return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); };
   var brl = function (v) { return Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
   var NOMES = { lacrado: 'Novo', seminovo: 'Seminovo' };
@@ -1242,9 +1288,8 @@
       var ops = escolhida.map(function (v) { return v[campo(k)]; }).filter(function (o) { return o && (!cor || (o.c && o.c[cor] != null)); });
       if (!ops.length) return;
       var m = ops.reduce(function (a, b) { return preco(b) < preco(a) ? b : a; });
-      var notas = ops.map(function (o) { return o.grade; }).filter(function (g, i, a) { return g && a.indexOf(g) === i; });
       var aPartir = ops.length > 1 || ops.some(function (o) { return cor ? (o.x || []).indexOf(cor) >= 0 : o.aPartir; });
-      blocos.push({ k: k, preco: preco(m), nota: notas.length === 1 ? notas[0] : '', aPartir: aPartir });
+      blocos.push({ k: k, preco: preco(m), aPartir: aPartir });
     });
     var nome = c.querySelector('.cor-nome');
     if (nome) {
@@ -1259,7 +1304,7 @@
     c.querySelector('.valores').className = 'valores n' + blocos.length;
     c.querySelector('.valores').innerHTML = blocos.map(function (b) {
       return '<div class="valor" data-condicao="' + b.k + '" data-preco="' + b.preco + '"><span class="estado">' + NOMES[b.k]
-        + (/^A[+-]?$/.test(b.nota) ? ' <span class="nota">' + b.nota + '</span>' : '') + (b.aPartir ? ' <span class="apartir">· a partir de</span>' : '')
+        + (b.aPartir ? ' <span class="apartir">· a partir de</span>' : '')
         + '</span><span class="preco">' + brl(b.preco) + '</span><span class="parcela">ou 12x de ' + brl(Math.round(b.preco * 10) / 100) + '</span></div>';
     }).join('');
     c._menor = blocos.length ? Math.min.apply(null, blocos.map(function (b) { return b.preco; })) : Infinity;
@@ -1274,7 +1319,8 @@
     cartoes.forEach(function (c) {
       if (c._sel !== null && memoria.value && c._var[c._sel].m !== memoria.value) c._sel = null;
       var tem = montar(c);
-      var ok = tem && (!estado.marca || c.getAttribute('data-marca') === estado.marca)
+      var ok = tem && (!estado.categoria || c.getAttribute('data-categoria') === estado.categoria)
+        && (!estado.marca || c.getAttribute('data-marca') === estado.marca)
         && (!estado.pronta || c.getAttribute('data-pronta') === '1')
         && (!memoria.value || c._var.some(function (v) { return v.m === memoria.value; }))
         && termos.every(function (t) { return limpo(c.getAttribute('data-busca')).indexOf(t) >= 0; });
@@ -1313,14 +1359,25 @@
     if (memoria.value && c._sel !== null && c._var[i].m !== memoria.value) { memoria.value = ''; aplicar(); return; }
     montar(c); if (ordem.value !== 'novo') ordenar();
   });
+  // Banner: se o cartão do modelo estiver escondido pelos filtros, limpa os filtros antes de ir até ele.
+  document.querySelectorAll('.vitrine a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var alvo = document.getElementById(a.getAttribute('data-cartao'));
+      if (!alvo || !alvo.hidden) return;
+      busca.value = ''; memoria.value = '';
+      document.querySelectorAll('.segmento').forEach(function (s) { var b = s.querySelector('button'); if (b) b.click(); });
+      aplicar();
+    });
+  });
   busca.addEventListener('input', aplicar);
   memoria.addEventListener('change', aplicar);
   ordem.addEventListener('change', ordenar);
   try {
     var p = new URLSearchParams(location.search);
     if (p.get('q')) busca.value = p.get('q');
-    var m = p.get('marca');
-    if (m) document.querySelectorAll('.segmento button[data-filtro="marca"]').forEach(function (b) { if (b.getAttribute('data-valor').toLowerCase() === m.toLowerCase()) b.click(); });
+    [['marca', p.get('marca')], ['categoria', p.get('tipo')]].forEach(function (par) {
+      if (par[1]) document.querySelectorAll('.segmento button[data-filtro="' + par[0] + '"]').forEach(function (b) { if (b.getAttribute('data-valor').toLowerCase() === par[1].toLowerCase()) b.click(); });
+    });
   } catch (e) {}
   aplicar();
 })();
