@@ -73,6 +73,12 @@
   .mem:hover { border-color: var(--texto-3); }
   .mem[aria-pressed="true"] { border-color: var(--azul-botao); box-shadow: 0 0 0 1px var(--azul-botao); font-weight: 600; }
   .ram { margin: -8px 0 12px; font-size: 13px; color: var(--texto-2); }
+  .cores { display: flex; align-items: center; gap: 6px; margin: -10px 0 10px; min-height: 30px; }
+  .bolas { display: flex; flex-wrap: wrap; }
+  .cor { position: relative; width: 28px; height: 28px; border: 0; padding: 0; background: transparent; border-radius: 50%; cursor: pointer; }
+  .cor::before { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--tom); box-shadow: inset 0 0 0 1px rgba(0,0,0,.2); }
+  .cor[aria-pressed="true"]::after { content: ""; position: absolute; inset: 1px; border-radius: 50%; box-shadow: 0 0 0 2px var(--azul-botao); }
+  .cor-nome { font-size: 12px; color: var(--texto-2); }
   .valores { display: grid; gap: 14px; padding: 14px 0 16px; border-top: 1px solid #e8e8ed; }
   .valores.n2 { grid-template-columns: 1fr 1fr; }
   .valores.n3 { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
@@ -153,7 +159,7 @@
     <div class="grade" id="grade">
       <article class="cartao" id="apple-iphone-duo" data-marca="Apple" data-modelo="iPhone Duo"
         data-geracao="19" data-menor="15950" data-pronta="0"
-        data-busca="apple iphone duo 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:15950,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone duo 256 gb night sky" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:15950,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Night Sky&quot;:15950},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-duo.webp" alt="iPhone Duo" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -162,6 +168,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone Duo">
+          <span class="bolas"><button type="button" class="cor" data-cor="Night Sky" aria-pressed="false" title="Night Sky" aria-label="Night Sky" style="--tom:#22304d"></button></span>
+          <span class="cor-nome">Night Sky</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="15950">
             <span class="estado">Novo</span>
@@ -173,7 +183,7 @@
       </article>
       <article class="cartao" id="apple-iphone-18-pro-max" data-marca="Apple" data-modelo="iPhone 18 Pro Max"
         data-geracao="18" data-menor="9458.9" data-pronta="0"
-        data-busca="apple iphone 18 pro max 256 gb 512 gb 2 tb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9845,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:{&quot;preco&quot;:9458.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:11825,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;2 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:18150,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone 18 pro max 256 gb 512 gb 2 tb azul preto glacial bordô silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9845,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:9889,&quot;Preto&quot;:9845,&quot;Glacial&quot;:9889,&quot;Bordô&quot;:10109,&quot;Silver&quot;:10109},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:9458.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Preto&quot;:9458.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:11825,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Bordô&quot;:11825,&quot;Glacial&quot;:11825},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;2 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:18150,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Glacial&quot;:18150},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-18-pro-max.webp" alt="iPhone 18 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -182,6 +192,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">512 GB</button><button type="button" class="mem" data-i="2" aria-pressed="false">2 TB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 18 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Glacial" aria-pressed="false" title="Glacial" aria-label="Glacial" style="--tom:#d9e6ee"></button><button type="button" class="cor" data-cor="Bordô" aria-pressed="false" title="Bordô" aria-label="Bordô" style="--tom:#6b2335"></button><button type="button" class="cor" data-cor="Silver" aria-pressed="false" title="Silver" aria-label="Silver" style="--tom:#e3e4e6"></button></span>
+          <span class="cor-nome">5 cores</span>
+        </div>
         <div class="valores n2">
           <div class="valor" data-condicao="lacrado" data-preco="9845">
             <span class="estado">Novo <span class="apartir">· a partir de</span></span>
@@ -198,7 +212,7 @@
       </article>
       <article class="cartao" id="apple-iphone-18-pro" data-marca="Apple" data-modelo="iPhone 18 Pro"
         data-geracao="18" data-menor="9339" data-pronta="0"
-        data-busca="apple iphone 18 pro 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9339,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone 18 pro 256 gb bordô preto glacial" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9339,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Bordô&quot;:9339,&quot;Preto&quot;:9339,&quot;Glacial&quot;:9339},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-18-pro.webp" alt="iPhone 18 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -207,6 +221,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 18 Pro">
+          <span class="bolas"><button type="button" class="cor" data-cor="Bordô" aria-pressed="false" title="Bordô" aria-label="Bordô" style="--tom:#6b2335"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Glacial" aria-pressed="false" title="Glacial" aria-label="Glacial" style="--tom:#d9e6ee"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="9339">
             <span class="estado">Novo</span>
@@ -218,7 +236,7 @@
       </article>
       <article class="cartao" id="apple-iphone-17-pro-max" data-marca="Apple" data-modelo="iPhone 17 Pro Max"
         data-geracao="17" data-menor="7093.9" data-pronta="0"
-        data-busca="apple iphone 17 pro max 256 gb 512 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:8525,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:{&quot;preco&quot;:7093.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9955,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:{&quot;preco&quot;:8237.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 17 pro max 256 gb 512 gb laranja azul silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:8525,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Laranja&quot;:8525,&quot;Azul&quot;:8569,&quot;Silver&quot;:8855},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:7093.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Laranja&quot;:7093.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:9955,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:9955,&quot;Silver&quot;:9955},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:8237.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Azul&quot;:8237.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-17-pro-max.webp" alt="iPhone 17 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -227,6 +245,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">512 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 17 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Laranja" aria-pressed="false" title="Laranja" aria-label="Laranja" style="--tom:#f07a32"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Silver" aria-pressed="false" title="Silver" aria-label="Silver" style="--tom:#e3e4e6"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n2">
           <div class="valor" data-condicao="lacrado" data-preco="8525">
             <span class="estado">Novo <span class="apartir">· a partir de</span></span>
@@ -243,7 +265,7 @@
       </article>
       <article class="cartao" id="apple-iphone-17-pro" data-marca="Apple" data-modelo="iPhone 17 Pro"
         data-geracao="17" data-menor="7588.9" data-pronta="0"
-        data-busca="apple iphone 17 pro 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:7643.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:{&quot;preco&quot;:7588.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 17 pro 256 gb laranja silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:7643.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Laranja&quot;:7643.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:7588.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Silver&quot;:7588.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-17-pro.webp" alt="iPhone 17 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -252,6 +274,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 17 Pro">
+          <span class="bolas"><button type="button" class="cor" data-cor="Laranja" aria-pressed="false" title="Laranja" aria-label="Laranja" style="--tom:#f07a32"></button><button type="button" class="cor" data-cor="Silver" aria-pressed="false" title="Silver" aria-label="Silver" style="--tom:#e3e4e6"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n2">
           <div class="valor" data-condicao="lacrado" data-preco="7643.9">
             <span class="estado">Novo</span>
@@ -268,7 +294,7 @@
       </article>
       <article class="cartao" id="apple-iphone-17" data-marca="Apple" data-modelo="iPhone 17"
         data-geracao="17" data-menor="5993.9" data-pronta="0"
-        data-busca="apple iphone 17 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:5993.9,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone 17 256 gb azul branco preto" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:5993.9,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:5993.9,&quot;Branco&quot;:6059.9,&quot;Preto&quot;:6059.9},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-17.webp" alt="iPhone 17" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -277,6 +303,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 17">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Branco" aria-pressed="false" title="Branco" aria-label="Branco" style="--tom:#f4f4f0"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="5993.9">
             <span class="estado">Novo <span class="apartir">· a partir de</span></span>
@@ -288,7 +318,7 @@
       </article>
       <article class="cartao" id="apple-iphone-16-pro-max" data-marca="Apple" data-modelo="iPhone 16 Pro Max"
         data-geracao="16" data-menor="5388.9" data-pronta="0"
-        data-busca="apple iphone 16 pro max 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:5388.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 16 pro max 256 gb natural" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:5388.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Natural&quot;:5388.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-16-pro-max.webp" alt="iPhone 16 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -297,6 +327,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 16 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Natural" aria-pressed="false" title="Natural" aria-label="Natural" style="--tom:#c4bdb2"></button></span>
+          <span class="cor-nome">Natural</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="5388.9">
             <span class="estado">Seminovo <span class="nota">A+</span></span>
@@ -308,7 +342,7 @@
       </article>
       <article class="cartao" id="apple-iphone-16-pro" data-marca="Apple" data-modelo="iPhone 16 Pro"
         data-geracao="16" data-menor="4563.9" data-pronta="0"
-        data-busca="apple iphone 16 pro 128 gb 256 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4563.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4838.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 16 pro 128 gb 256 gb preto desert natural" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4563.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Preto&quot;:4563.9,&quot;Desert&quot;:4563.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4838.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Preto&quot;:4838.9,&quot;Natural&quot;:4838.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-16-pro.webp" alt="iPhone 16 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -317,6 +351,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 16 Pro">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Desert" aria-pressed="false" title="Desert" aria-label="Desert" style="--tom:#c9a98a"></button><button type="button" class="cor" data-cor="Natural" aria-pressed="false" title="Natural" aria-label="Natural" style="--tom:#c4bdb2"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="4563.9">
             <span class="estado">Seminovo <span class="nota">A+</span> <span class="apartir">· a partir de</span></span>
@@ -328,7 +366,7 @@
       </article>
       <article class="cartao" id="apple-iphone-16" data-marca="Apple" data-modelo="iPhone 16"
         data-geracao="16" data-menor="3848.9" data-pronta="0"
-        data-busca="apple iphone 16 128 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4684.9,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:{&quot;preco&quot;:3848.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 16 128 gb preto branco azul verde" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4684.9,&quot;aPartir&quot;:true,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:4684.9,&quot;Branco&quot;:5049},&quot;x&quot;:[&quot;Preto&quot;]},&quot;s&quot;:{&quot;preco&quot;:3848.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Azul&quot;:3848.9,&quot;Verde&quot;:3848.9,&quot;Preto&quot;:3848.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-16.webp" alt="iPhone 16" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -337,6 +375,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 16">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Branco" aria-pressed="false" title="Branco" aria-label="Branco" style="--tom:#f4f4f0"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Verde" aria-pressed="false" title="Verde" aria-label="Verde" style="--tom:#9fbf9a"></button></span>
+          <span class="cor-nome">4 cores</span>
+        </div>
         <div class="valores n2">
           <div class="valor" data-condicao="lacrado" data-preco="4684.9">
             <span class="estado">Novo <span class="apartir">· a partir de</span></span>
@@ -353,7 +395,7 @@
       </article>
       <article class="cartao" id="apple-iphone-16-plus" data-marca="Apple" data-modelo="iPhone 16 Plus"
         data-geracao="16" data-menor="4134.9" data-pronta="0"
-        data-busca="apple iphone 16 plus 128 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4134.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 16 plus 128 gb azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4134.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Azul&quot;:4134.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-16-plus.webp" alt="iPhone 16 Plus" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -362,6 +404,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 16 Plus">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button></span>
+          <span class="cor-nome">Azul</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="4134.9">
             <span class="estado">Seminovo <span class="nota">A+</span></span>
@@ -373,7 +419,7 @@
       </article>
       <article class="cartao" id="apple-iphone-15-pro-max" data-marca="Apple" data-modelo="iPhone 15 Pro Max"
         data-geracao="15" data-menor="4398.9" data-pronta="0"
-        data-busca="apple iphone 15 pro max 256 gb 512 gb 1 tb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4398.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4585.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;1 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4805.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 15 pro max 256 gb 512 gb 1 tb azul preto natural" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4398.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:4398.9,&quot;Preto&quot;:4398.9,&quot;Natural&quot;:4398.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4585.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:4585.9,&quot;Preto&quot;:4585.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;1 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4805.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:4805.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-15-pro-max.webp" alt="iPhone 15 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -382,6 +428,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">512 GB</button><button type="button" class="mem" data-i="2" aria-pressed="false">1 TB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 15 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Natural" aria-pressed="false" title="Natural" aria-label="Natural" style="--tom:#c4bdb2"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="4398.9">
             <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
@@ -393,7 +443,7 @@
       </article>
       <article class="cartao" id="apple-iphone-15-pro" data-marca="Apple" data-modelo="iPhone 15 Pro"
         data-geracao="15" data-menor="3683.9" data-pronta="0"
-        data-busca="apple iphone 15 pro 128 gb 256 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3683.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3848.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 15 pro 128 gb 256 gb azul preto silver" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3683.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:3683.9,&quot;Preto&quot;:3683.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3848.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Silver&quot;:3848.9,&quot;Preto&quot;:3848.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-15-pro.webp" alt="iPhone 15 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -402,6 +452,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 15 Pro">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Silver" aria-pressed="false" title="Silver" aria-label="Silver" style="--tom:#e3e4e6"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="3683.9">
             <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
@@ -413,7 +467,7 @@
       </article>
       <article class="cartao" id="apple-iphone-15" data-marca="Apple" data-modelo="iPhone 15"
         data-geracao="15" data-menor="2803.9" data-pronta="0"
-        data-busca="apple iphone 15 128 gb 256 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4343.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:{&quot;preco&quot;:2803.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4508.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="apple iphone 15 128 gb 256 gb azul preto rosa verde" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4343.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:4343.9,&quot;Preto&quot;:4343.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:2803.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Rosa&quot;:2803.9,&quot;Verde&quot;:2803.9,&quot;Preto&quot;:2803.9,&quot;Azul&quot;:2803.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4508.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:4508.9,&quot;Preto&quot;:4508.9},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-15.webp" alt="iPhone 15" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -422,6 +476,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 15">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Rosa" aria-pressed="false" title="Rosa" aria-label="Rosa" style="--tom:#f3c7d0"></button><button type="button" class="cor" data-cor="Verde" aria-pressed="false" title="Verde" aria-label="Verde" style="--tom:#9fbf9a"></button></span>
+          <span class="cor-nome">4 cores</span>
+        </div>
         <div class="valores n2">
           <div class="valor" data-condicao="lacrado" data-preco="4343.9">
             <span class="estado">Novo <span class="apartir">· a partir de</span></span>
@@ -438,7 +496,7 @@
       </article>
       <article class="cartao" id="apple-iphone-15-plus" data-marca="Apple" data-modelo="iPhone 15 Plus"
         data-geracao="15" data-menor="3078.9" data-pronta="0"
-        data-busca="apple iphone 15 plus 128 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3078.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 15 plus 128 gb preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3078.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3078.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-15-plus.webp" alt="iPhone 15 Plus" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -447,6 +505,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 15 Plus">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">Preto</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="3078.9">
             <span class="estado">Seminovo <span class="nota">A</span></span>
@@ -458,7 +520,7 @@
       </article>
       <article class="cartao" id="apple-iphone-14-pro-max" data-marca="Apple" data-modelo="iPhone 14 Pro Max"
         data-geracao="14" data-menor="3463.9" data-pronta="0"
-        data-busca="apple iphone 14 pro max 128 gb 256 gb 512 gb 1 tb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3463.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3661.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3870.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;1 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4068.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 14 pro max 128 gb 256 gb 512 gb 1 tb roxo gold preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3463.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Roxo&quot;:3463.9,&quot;Gold&quot;:3463.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3661.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Roxo&quot;:3661.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3870.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3870.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;1 TB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:4068.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:4068.9,&quot;Roxo&quot;:4068.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-14-pro-max.webp" alt="iPhone 14 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -467,6 +529,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button><button type="button" class="mem" data-i="2" aria-pressed="false">512 GB</button><button type="button" class="mem" data-i="3" aria-pressed="false">1 TB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 14 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Roxo" aria-pressed="false" title="Roxo" aria-label="Roxo" style="--tom:#7d5ca8"></button><button type="button" class="cor" data-cor="Gold" aria-pressed="false" title="Gold" aria-label="Gold" style="--tom:#ead7b5"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="3463.9">
             <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
@@ -478,7 +544,7 @@
       </article>
       <article class="cartao" id="apple-iphone-14-pro" data-marca="Apple" data-modelo="iPhone 14 Pro"
         data-geracao="14" data-menor="3023.9" data-pronta="0"
-        data-busca="apple iphone 14 pro 128 gb 256 gb 512 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3023.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3243.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3441.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 14 pro 128 gb 256 gb 512 gb roxo preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3023.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Roxo&quot;:3023.9,&quot;Preto&quot;:3023.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3243.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3243.9,&quot;Roxo&quot;:3243.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3441.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3441.9,&quot;Roxo&quot;:3441.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-14-pro.webp" alt="iPhone 14 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -487,6 +553,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button><button type="button" class="mem" data-i="2" aria-pressed="false">512 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 14 Pro">
+          <span class="bolas"><button type="button" class="cor" data-cor="Roxo" aria-pressed="false" title="Roxo" aria-label="Roxo" style="--tom:#7d5ca8"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="3023.9">
             <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
@@ -498,7 +568,7 @@
       </article>
       <article class="cartao" id="apple-iphone-14" data-marca="Apple" data-modelo="iPhone 14"
         data-geracao="14" data-menor="2198.9" data-pronta="0"
-        data-busca="apple iphone 14 128 gb 256 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2198.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4398.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:{&quot;preco&quot;:2418.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 14 128 gb 256 gb lilás azul vermelho preto branco" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2198.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Lilás&quot;:2198.9,&quot;Azul&quot;:2198.9,&quot;Vermelho&quot;:2198.9,&quot;Preto&quot;:2198.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:4398.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Branco&quot;:4398.9,&quot;Preto&quot;:4398.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:2418.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A+&quot;,&quot;c&quot;:{&quot;Preto&quot;:2418.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-14.webp" alt="iPhone 14" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -507,6 +577,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 14">
+          <span class="bolas"><button type="button" class="cor" data-cor="Lilás" aria-pressed="false" title="Lilás" aria-label="Lilás" style="--tom:#c8b6e2"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Vermelho" aria-pressed="false" title="Vermelho" aria-label="Vermelho" style="--tom:#c8102e"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Branco" aria-pressed="false" title="Branco" aria-label="Branco" style="--tom:#f4f4f0"></button></span>
+          <span class="cor-nome">5 cores</span>
+        </div>
         <div class="valores n2">
           <div class="valor" data-condicao="lacrado" data-preco="4398.9">
             <span class="estado">Novo</span>
@@ -523,7 +597,7 @@
       </article>
       <article class="cartao" id="apple-iphone-14-plus" data-marca="Apple" data-modelo="iPhone 14 Plus"
         data-geracao="14" data-menor="2418.9" data-pronta="0"
-        data-busca="apple iphone 14 plus 128 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2418.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 14 plus 128 gb preto lilás azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2418.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:2418.9,&quot;Lilás&quot;:2418.9,&quot;Azul&quot;:2418.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-14-plus.webp" alt="iPhone 14 Plus" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -532,6 +606,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 14 Plus">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Lilás" aria-pressed="false" title="Lilás" aria-label="Lilás" style="--tom:#c8b6e2"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="2418.9">
             <span class="estado">Seminovo <span class="nota">A</span></span>
@@ -543,7 +621,7 @@
       </article>
       <article class="cartao" id="apple-iphone-13-pro-max" data-marca="Apple" data-modelo="iPhone 13 Pro Max"
         data-geracao="13" data-menor="2935.9" data-pronta="0"
-        data-busca="apple iphone 13 pro max 128 gb 512 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2935.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3408.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 13 pro max 128 gb 512 gb preto azul verde" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2935.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:2935.9,&quot;Azul&quot;:2935.9,&quot;Verde&quot;:2935.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:3408.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:3408.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-13-pro-max.webp" alt="iPhone 13 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -552,6 +630,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">512 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 13 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Verde" aria-pressed="false" title="Verde" aria-label="Verde" style="--tom:#9fbf9a"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="2935.9">
             <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
@@ -563,7 +645,7 @@
       </article>
       <article class="cartao" id="apple-iphone-13-pro" data-marca="Apple" data-modelo="iPhone 13 Pro"
         data-geracao="13" data-menor="2605.9" data-pronta="0"
-        data-busca="apple iphone 13 pro 128 gb 256 gb 512 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:3738.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:{&quot;preco&quot;:2605.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2638.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2968.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 13 pro 128 gb 256 gb 512 gb preto silver azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:{&quot;preco&quot;:3738.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:3738.9,&quot;Silver&quot;:3738.9},&quot;x&quot;:[]},&quot;s&quot;:{&quot;preco&quot;:2605.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Silver&quot;:2605.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2638.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2638.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2968.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2968.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-13-pro.webp" alt="iPhone 13 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -572,6 +654,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button><button type="button" class="mem" data-i="2" aria-pressed="false">512 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 13 Pro">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Silver" aria-pressed="false" title="Silver" aria-label="Silver" style="--tom:#e3e4e6"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n2">
           <div class="valor" data-condicao="lacrado" data-preco="3738.9">
             <span class="estado">Novo</span>
@@ -588,7 +674,7 @@
       </article>
       <article class="cartao" id="apple-iphone-13" data-marca="Apple" data-modelo="iPhone 13"
         data-geracao="13" data-menor="1945.9" data-pronta="0"
-        data-busca="apple iphone 13 128 gb 256 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1945.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2165.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 13 128 gb 256 gb azul preto vermelho branco rosa" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1945.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:1945.9,&quot;Preto&quot;:1945.9,&quot;Vermelho&quot;:1945.9,&quot;Branco&quot;:1945.9,&quot;Rosa&quot;:1945.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2165.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2165.9,&quot;Preto&quot;:2165.9,&quot;Vermelho&quot;:2165.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-13.webp" alt="iPhone 13" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -597,6 +683,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 13">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Vermelho" aria-pressed="false" title="Vermelho" aria-label="Vermelho" style="--tom:#c8102e"></button><button type="button" class="cor" data-cor="Branco" aria-pressed="false" title="Branco" aria-label="Branco" style="--tom:#f4f4f0"></button><button type="button" class="cor" data-cor="Rosa" aria-pressed="false" title="Rosa" aria-label="Rosa" style="--tom:#f3c7d0"></button></span>
+          <span class="cor-nome">5 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="1945.9">
             <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
@@ -608,7 +698,7 @@
       </article>
       <article class="cartao" id="apple-iphone-12-pro-max" data-marca="Apple" data-modelo="iPhone 12 Pro Max"
         data-geracao="12" data-menor="2308.9" data-pronta="0"
-        data-busca="apple iphone 12 pro max 128 gb 256 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2308.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2528.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 12 pro max 128 gb 256 gb azul branco gold preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2308.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2308.9,&quot;Branco&quot;:2308.9,&quot;Gold&quot;:2308.9},&quot;x&quot;:[]},&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2528.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:2528.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-12-pro-max.webp" alt="iPhone 12 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -617,6 +707,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 12 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Branco" aria-pressed="false" title="Branco" aria-label="Branco" style="--tom:#f4f4f0"></button><button type="button" class="cor" data-cor="Gold" aria-pressed="false" title="Gold" aria-label="Gold" style="--tom:#ead7b5"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">4 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="2308.9">
             <span class="estado">Seminovo <span class="nota">A</span> <span class="apartir">· a partir de</span></span>
@@ -628,7 +722,7 @@
       </article>
       <article class="cartao" id="apple-iphone-12-pro" data-marca="Apple" data-modelo="iPhone 12 Pro"
         data-geracao="12" data-menor="2187.9" data-pronta="0"
-        data-busca="apple iphone 12 pro 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2187.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 12 pro 256 gb azul" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:2187.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Azul&quot;:2187.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-12-pro.webp" alt="iPhone 12 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -637,6 +731,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 12 Pro">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button></span>
+          <span class="cor-nome">Azul</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="2187.9">
             <span class="estado">Seminovo <span class="nota">A</span></span>
@@ -648,7 +746,7 @@
       </article>
       <article class="cartao" id="apple-iphone-12" data-marca="Apple" data-modelo="iPhone 12"
         data-geracao="12" data-menor="1527.9" data-pronta="0"
-        data-busca="apple iphone 12 128 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1527.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A-&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 12 128 gb lilás vermelho" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1527.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A-&quot;,&quot;c&quot;:{&quot;Lilás&quot;:1527.9,&quot;Vermelho&quot;:1527.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-12.webp" alt="iPhone 12" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -657,6 +755,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 12">
+          <span class="bolas"><button type="button" class="cor" data-cor="Lilás" aria-pressed="false" title="Lilás" aria-label="Lilás" style="--tom:#c8b6e2"></button><button type="button" class="cor" data-cor="Vermelho" aria-pressed="false" title="Vermelho" aria-label="Vermelho" style="--tom:#c8102e"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="1527.9">
             <span class="estado">Seminovo <span class="nota">A-</span></span>
@@ -668,7 +770,7 @@
       </article>
       <article class="cartao" id="apple-iphone-11-pro-max" data-marca="Apple" data-modelo="iPhone 11 Pro Max"
         data-geracao="11" data-menor="1593.9" data-pronta="0"
-        data-busca="apple iphone 11 pro max 64 gb" data-variantes="[{&quot;m&quot;:&quot;64 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1593.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 11 pro max 64 gb gold verde preto" data-variantes="[{&quot;m&quot;:&quot;64 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1593.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Gold&quot;:1593.9,&quot;Verde&quot;:1593.9,&quot;Preto&quot;:1593.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-11-pro-max.webp" alt="iPhone 11 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -677,6 +779,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">64 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 11 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Gold" aria-pressed="false" title="Gold" aria-label="Gold" style="--tom:#ead7b5"></button><button type="button" class="cor" data-cor="Verde" aria-pressed="false" title="Verde" aria-label="Verde" style="--tom:#9fbf9a"></button><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="1593.9">
             <span class="estado">Seminovo <span class="nota">A</span></span>
@@ -688,7 +794,7 @@
       </article>
       <article class="cartao" id="apple-iphone-11-pro" data-marca="Apple" data-modelo="iPhone 11 Pro"
         data-geracao="11" data-menor="1428.9" data-pronta="0"
-        data-busca="apple iphone 11 pro 64 gb" data-variantes="[{&quot;m&quot;:&quot;64 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1428.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;},&quot;p&quot;:0}]">
+        data-busca="apple iphone 11 pro 64 gb preto verde" data-variantes="[{&quot;m&quot;:&quot;64 GB&quot;,&quot;r&quot;:&quot;&quot;,&quot;l&quot;:null,&quot;s&quot;:{&quot;preco&quot;:1428.9,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;A&quot;,&quot;c&quot;:{&quot;Preto&quot;:1428.9,&quot;Verde&quot;:1428.9},&quot;x&quot;:[]},&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/iphone-11-pro.webp" alt="iPhone 11 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Apple</span>
@@ -697,6 +803,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">64 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do iPhone 11 Pro">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Verde" aria-pressed="false" title="Verde" aria-label="Verde" style="--tom:#9fbf9a"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="seminovo" data-preco="1428.9">
             <span class="estado">Seminovo <span class="nota">A</span></span>
@@ -708,7 +818,7 @@
       </article>
       <article class="cartao" id="realme-realme-note-80" data-marca="Realme" data-modelo="Realme Note 80"
         data-geracao="80" data-menor="1248.5" data-pronta="0"
-        data-busca="realme realme note 80 128 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1248.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="realme realme note 80 128 gb preto azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1248.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1248.5,&quot;Azul&quot;:1248.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Realme</span>
@@ -717,6 +827,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Realme Note 80">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="1248.5">
             <span class="estado">Novo</span>
@@ -728,7 +842,7 @@
       </article>
       <article class="cartao" id="xiaomi-poco-c85" data-marca="Xiaomi" data-modelo="Poco C85"
         data-geracao="85" data-menor="1133" data-pronta="0"
-        data-busca="xiaomi poco c85 128 gb 256 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;6 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1133,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1397,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco c85 128 gb 256 gb preto verde lilás" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;6 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1133,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1133,&quot;Verde&quot;:1133,&quot;Lilás&quot;:1133},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1397,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1397},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-c85.webp" alt="Poco C85" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -737,6 +851,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Poco C85">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Verde" aria-pressed="false" title="Verde" aria-label="Verde" style="--tom:#9fbf9a"></button><button type="button" class="cor" data-cor="Lilás" aria-pressed="false" title="Lilás" aria-label="Lilás" style="--tom:#c8b6e2"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="1133">
             <span class="estado">Novo <span class="apartir">· a partir de</span></span>
@@ -748,7 +866,7 @@
       </article>
       <article class="cartao" id="xiaomi-poco-c81-pro" data-marca="Xiaomi" data-modelo="Poco C81 Pro"
         data-geracao="81" data-menor="1248.5" data-pronta="0"
-        data-busca="xiaomi poco c81 pro 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1248.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco c81 pro 256 gb dourado" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1248.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Dourado&quot;:1248.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-c81-pro.webp" alt="Poco C81 Pro" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -757,6 +875,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Poco C81 Pro">
+          <span class="bolas"><button type="button" class="cor" data-cor="Dourado" aria-pressed="false" title="Dourado" aria-label="Dourado" style="--tom:#d8b877"></button></span>
+          <span class="cor-nome">Dourado</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="1248.5">
             <span class="estado">Novo</span>
@@ -768,7 +890,7 @@
       </article>
       <article class="cartao" id="xiaomi-poco-c71" data-marca="Xiaomi" data-modelo="Poco C71"
         data-geracao="71" data-menor="874.5" data-pronta="0"
-        data-busca="xiaomi poco c71 128 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:874.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco c71 128 gb preto" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:874.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:874.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-c71.webp" alt="Poco C71" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -777,6 +899,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Poco C71">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">Preto</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="874.5">
             <span class="estado">Novo</span>
@@ -788,7 +914,7 @@
       </article>
       <article class="cartao" id="xiaomi-redmi-note-17-pro-max" data-marca="Xiaomi" data-modelo="Redmi Note 17 Pro Max"
         data-geracao="17" data-menor="3168" data-pronta="0"
-        data-busca="xiaomi redmi note 17 pro max 512 gb" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3168,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 17 pro max 512 gb preto branco" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3168,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:3168,&quot;Branco&quot;:3168},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Xiaomi</span>
@@ -797,6 +923,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">512 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Redmi Note 17 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Branco" aria-pressed="false" title="Branco" aria-label="Branco" style="--tom:#f4f4f0"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="3168">
             <span class="estado">Novo</span>
@@ -808,7 +938,7 @@
       </article>
       <article class="cartao" id="xiaomi-redmi-note-17-pro-5g" data-marca="Xiaomi" data-modelo="Redmi Note 17 Pro 5G"
         data-geracao="17" data-menor="2398" data-pronta="0"
-        data-busca="xiaomi redmi note 17 pro 5g 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2398,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 17 pro 5g 256 gb preto" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2398,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:2398},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Xiaomi</span>
@@ -817,6 +947,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Redmi Note 17 Pro 5G">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">Preto</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="2398">
             <span class="estado">Novo</span>
@@ -828,7 +962,7 @@
       </article>
       <article class="cartao" id="xiaomi-redmi-17" data-marca="Xiaomi" data-modelo="Redmi 17"
         data-geracao="17" data-menor="1276" data-pronta="0"
-        data-busca="xiaomi redmi 17 128 gb 256 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1276,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;6 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1639,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi 17 128 gb 256 gb preto azul lilás" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1276,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1276,&quot;Azul&quot;:1276,&quot;Lilás&quot;:1276},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;6 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1639,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1639,&quot;Azul&quot;:1639},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Xiaomi</span>
@@ -837,6 +971,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Redmi 17">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Lilás" aria-pressed="false" title="Lilás" aria-label="Lilás" style="--tom:#c8b6e2"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="1276">
             <span class="estado">Novo <span class="apartir">· a partir de</span></span>
@@ -848,7 +986,7 @@
       </article>
       <article class="cartao" id="xiaomi-redmi-note-17" data-marca="Xiaomi" data-modelo="Redmi Note 17"
         data-geracao="17" data-menor="1782" data-pronta="0"
-        data-busca="xiaomi redmi note 17 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1782,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 17 256 gb preto azul verde" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1782,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1782,&quot;Azul&quot;:1782,&quot;Verde&quot;:1782},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Xiaomi</span>
@@ -857,6 +995,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Redmi Note 17">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button><button type="button" class="cor" data-cor="Verde" aria-pressed="false" title="Verde" aria-label="Verde" style="--tom:#9fbf9a"></button></span>
+          <span class="cor-nome">3 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="1782">
             <span class="estado">Novo</span>
@@ -868,7 +1010,7 @@
       </article>
       <article class="cartao" id="xiaomi-redmi-note-15-pro-5g" data-marca="Xiaomi" data-modelo="Redmi Note 15 Pro 5G"
         data-geracao="15" data-menor="2442" data-pronta="0"
-        data-busca="xiaomi redmi note 15 pro 5g 512 gb" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2442,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 15 pro 5g 512 gb preto" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2442,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:2442},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Xiaomi</span>
@@ -877,6 +1019,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">512 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Redmi Note 15 Pro 5G">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">Preto</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="2442">
             <span class="estado">Novo</span>
@@ -888,7 +1034,7 @@
       </article>
       <article class="cartao" id="xiaomi-redmi-note-15-pro" data-marca="Xiaomi" data-modelo="Redmi Note 15 Pro+"
         data-geracao="15" data-menor="2805" data-pronta="0"
-        data-busca="xiaomi redmi note 15 pro+ 512 gb" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2805,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 15 pro+ 512 gb azul" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2805,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Azul&quot;:2805},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Xiaomi</span>
@@ -897,6 +1043,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">512 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Redmi Note 15 Pro+">
+          <span class="bolas"><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button></span>
+          <span class="cor-nome">Azul</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="2805">
             <span class="estado">Novo</span>
@@ -908,7 +1058,7 @@
       </article>
       <article class="cartao" id="xiaomi-redmi-15c" data-marca="Xiaomi" data-modelo="Redmi 15C"
         data-geracao="15" data-menor="1072.5" data-pronta="0"
-        data-busca="xiaomi redmi 15c 128 gb 256 gb" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1072.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1298,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi 15c 128 gb 256 gb preto azul" data-variantes="[{&quot;m&quot;:&quot;128 GB&quot;,&quot;r&quot;:&quot;4 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1072.5,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1072.5,&quot;Azul&quot;:1072.5},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1298,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1298,&quot;Azul&quot;:1298},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/redmi-15c.webp" alt="Redmi 15C" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -917,6 +1067,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">128 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Redmi 15C">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="1072.5">
             <span class="estado">Novo <span class="apartir">· a partir de</span></span>
@@ -928,7 +1082,7 @@
       </article>
       <article class="cartao" id="xiaomi-redmi-note-15" data-marca="Xiaomi" data-modelo="Redmi Note 15"
         data-geracao="15" data-menor="1683" data-pronta="0"
-        data-busca="xiaomi redmi note 15 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1683,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi redmi note 15 256 gb preto azul" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1683,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1683,&quot;Azul&quot;:1683},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Xiaomi</span>
@@ -937,6 +1091,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Redmi Note 15">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Azul" aria-pressed="false" title="Azul" aria-label="Azul" style="--tom:#4a6a8f"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="1683">
             <span class="estado">Novo</span>
@@ -948,7 +1106,7 @@
       </article>
       <article class="cartao" id="xiaomi-poco-x8-pro-max" data-marca="Xiaomi" data-modelo="Poco X8 Pro Max"
         data-geracao="8" data-menor="3465" data-pronta="0"
-        data-busca="xiaomi poco x8 pro max 256 gb 512 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3465,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3894,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco x8 pro max 256 gb 512 gb preto branco" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3465,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:3465,&quot;Branco&quot;:3465},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0},{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;12 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:3894,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:3894},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-x8-pro-max.webp" alt="Poco X8 Pro Max" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -957,6 +1115,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button><button type="button" class="mem" data-i="1" aria-pressed="false">512 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Poco X8 Pro Max">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Branco" aria-pressed="false" title="Branco" aria-label="Branco" style="--tom:#f4f4f0"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="3465">
             <span class="estado">Novo <span class="apartir">· a partir de</span></span>
@@ -968,7 +1130,7 @@
       </article>
       <article class="cartao" id="xiaomi-poco-m8" data-marca="Xiaomi" data-modelo="Poco M8"
         data-geracao="8" data-menor="1914" data-pronta="0"
-        data-busca="xiaomi poco m8 512 gb" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1914,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco m8 512 gb silver" data-variantes="[{&quot;m&quot;:&quot;512 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1914,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Silver&quot;:1914},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Xiaomi</span>
@@ -977,6 +1139,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">512 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Poco M8">
+          <span class="bolas"><button type="button" class="cor" data-cor="Silver" aria-pressed="false" title="Silver" aria-label="Silver" style="--tom:#e3e4e6"></button></span>
+          <span class="cor-nome">Silver</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="1914">
             <span class="estado">Novo</span>
@@ -988,7 +1154,7 @@
       </article>
       <article class="cartao" id="xiaomi-poco-x8" data-marca="Xiaomi" data-modelo="Poco X8"
         data-geracao="8" data-menor="2178" data-pronta="0"
-        data-busca="xiaomi poco x8 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2178,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco x8 256 gb preto" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:2178,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:2178},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         
         
         <span class="marca">Xiaomi</span>
@@ -997,6 +1163,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Poco X8">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button></span>
+          <span class="cor-nome">Preto</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="2178">
             <span class="estado">Novo</span>
@@ -1008,7 +1178,7 @@
       </article>
       <article class="cartao" id="xiaomi-poco-m7" data-marca="Xiaomi" data-modelo="Poco M7"
         data-geracao="7" data-menor="1485" data-pronta="0"
-        data-busca="xiaomi poco m7 256 gb" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1485,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;},&quot;s&quot;:null,&quot;p&quot;:0}]">
+        data-busca="xiaomi poco m7 256 gb preto silver" data-variantes="[{&quot;m&quot;:&quot;256 GB&quot;,&quot;r&quot;:&quot;8 GB&quot;,&quot;l&quot;:{&quot;preco&quot;:1485,&quot;aPartir&quot;:false,&quot;grade&quot;:&quot;&quot;,&quot;c&quot;:{&quot;Preto&quot;:1485,&quot;Silver&quot;:1485},&quot;x&quot;:[]},&quot;s&quot;:null,&quot;p&quot;:0}]">
         <img class="foto" src="/produtos/fotos/poco-m7.webp" alt="Poco M7" width="240" height="240" loading="lazy" decoding="async">
         
         <span class="marca">Xiaomi</span>
@@ -1017,6 +1187,10 @@
           <button type="button" class="mem" data-i="0" aria-pressed="false">256 GB</button>
         </div>
         <p class="ram" hidden></p>
+        <div class="cores" role="group" aria-label="Cor do Poco M7">
+          <span class="bolas"><button type="button" class="cor" data-cor="Preto" aria-pressed="false" title="Preto" aria-label="Preto" style="--tom:#2b2b2d"></button><button type="button" class="cor" data-cor="Silver" aria-pressed="false" title="Silver" aria-label="Silver" style="--tom:#e3e4e6"></button></span>
+          <span class="cor-nome">2 cores</span>
+        </div>
         <div class="valores n1">
           <div class="valor" data-condicao="lacrado" data-preco="1485">
             <span class="estado">Novo</span>
@@ -1035,7 +1209,7 @@
   <div class="largura">
     <div><h2>Até 18x no cartão</h2><p>À vista no Pix ou em 12x com parcela de um décimo do valor. Também parcelo em até 18x.</p></div>
     <div><h2>Seminovos revisados</h2><p>Bateria em torno de 85%. A letra ao lado é a nota de conservação: A+ é a melhor.</p></div>
-    <div><h2>Compra pelo WhatsApp</h2><p>Toque em Comprar, escolha a cor e combine a entrega comigo.</p></div>
+    <div><h2>Compra pelo WhatsApp</h2><p>Escolha a memória e a cor no cartão, toque em Comprar e combine a entrega comigo.</p></div>
   </div>
 </section>
 <footer class="rodape"><div class="largura">Valores enquanto durarem os estoques e sujeitos a alteração. As marcas citadas pertencem aos seus donos; esta página não é de nenhum fabricante.</div></footer>
@@ -1051,20 +1225,37 @@
   var brl = function (v) { return Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
   var NOMES = { lacrado: 'Novo', seminovo: 'Seminovo' };
   var ZAP = "https://wa.me/5534992072178?text=";
-  cartoes.forEach(function (c) { c._var = JSON.parse(c.getAttribute('data-variantes')); c._sel = null; });
+  cartoes.forEach(function (c) { c._var = JSON.parse(c.getAttribute('data-variantes')); c._sel = null; c._cor = null; });
   // Preços do cartão: a memória escolhida no cartão, senão a do filtro de cima, senão todas ("a partir de").
   function montar(c) {
     var vs = c._var, escolhida = c._sel !== null ? [vs[c._sel]] : memoria.value ? vs.filter(function (v) { return v.m === memoria.value; }) : vs;
+    var chaves = ['lacrado', 'seminovo'].filter(function (k) { return !estado.condicao || estado.condicao === k; });
+    var campo = function (k) { return k === 'lacrado' ? 'l' : 's'; };
+    // Cores que existem na memória e no estado escolhidos; a cor escolhida que não existe ali deixa de valer.
+    var tem = {};
+    escolhida.forEach(function (v) { chaves.forEach(function (k) { var o = v[campo(k)]; if (o) Object.keys(o.c || {}).forEach(function (x) { tem[x] = 1; }); }); });
+    if (c._cor && !tem[c._cor]) c._cor = null;
+    var cor = c._cor;
+    var preco = function (o) { return cor ? o.c[cor] : o.preco; };
     var blocos = [];
-    ['lacrado', 'seminovo'].forEach(function (k) {
-      if (estado.condicao && estado.condicao !== k) return;
-      var ops = escolhida.map(function (v) { return v[k === 'lacrado' ? 'l' : 's']; }).filter(Boolean);
+    chaves.forEach(function (k) {
+      var ops = escolhida.map(function (v) { return v[campo(k)]; }).filter(function (o) { return o && (!cor || (o.c && o.c[cor] != null)); });
       if (!ops.length) return;
-      var m = ops.reduce(function (a, b) { return b.preco < a.preco ? b : a; });
+      var m = ops.reduce(function (a, b) { return preco(b) < preco(a) ? b : a; });
       var notas = ops.map(function (o) { return o.grade; }).filter(function (g, i, a) { return g && a.indexOf(g) === i; });
-      var aPartir = ops.length > 1 || ops.some(function (o) { return o.aPartir; });
-      blocos.push({ k: k, preco: m.preco, nota: notas.length === 1 ? notas[0] : '', aPartir: aPartir });
+      var aPartir = ops.length > 1 || ops.some(function (o) { return cor ? (o.x || []).indexOf(cor) >= 0 : o.aPartir; });
+      blocos.push({ k: k, preco: preco(m), nota: notas.length === 1 ? notas[0] : '', aPartir: aPartir });
     });
+    var nome = c.querySelector('.cor-nome');
+    if (nome) {
+      var vis = [];
+      c.querySelectorAll('.cor').forEach(function (b) {
+        var x = b.getAttribute('data-cor'); b.hidden = !tem[x]; if (tem[x]) vis.push(x);
+        b.setAttribute('aria-pressed', String(x === cor));
+      });
+      c.querySelector('.cores').hidden = vis.length === 0;
+      nome.textContent = cor || (vis.length === 1 ? vis[0] : vis.length + ' cores');
+    }
     c.querySelector('.valores').className = 'valores n' + blocos.length;
     c.querySelector('.valores').innerHTML = blocos.map(function (b) {
       return '<div class="valor" data-condicao="' + b.k + '" data-preco="' + b.preco + '"><span class="estado">' + NOMES[b.k]
@@ -1075,7 +1266,7 @@
     var uma = escolhida.length === 1 ? escolhida[0] : null;
     var ram = c.querySelector('.ram'); ram.hidden = !(uma && uma.r); if (uma && uma.r) ram.textContent = uma.r + ' de RAM';
     c.querySelectorAll('.mem').forEach(function (b, i) { b.setAttribute('aria-pressed', String(c._sel === i || (c._sel === null && !!uma && vs[i] === uma && !!memoria.value))); });
-    c.querySelector('.comprar').href = ZAP + encodeURIComponent('Oi, Gabriel! Vi no site e quero saber do ' + c.getAttribute('data-modelo') + (uma ? ' ' + uma.m + (uma.r ? ' (' + uma.r + ' RAM)' : '') : '') + '.');
+    c.querySelector('.comprar').href = ZAP + encodeURIComponent('Oi, Gabriel! Vi no site e quero saber do ' + c.getAttribute('data-modelo') + (uma ? ' ' + uma.m + (uma.r ? ' (' + uma.r + ' RAM)' : '') : '') + (cor ? ' na cor ' + cor : '') + '.');
     return blocos.length > 0;
   }
   function aplicar() {
@@ -1109,6 +1300,13 @@
     });
   });
   grade.addEventListener('click', function (e) {
+    var bc = e.target.closest ? e.target.closest('.cor') : null;
+    if (bc) {
+      var cc = bc.closest('.cartao'), x = bc.getAttribute('data-cor');
+      cc._cor = cc._cor === x ? null : x;
+      montar(cc); if (ordem.value !== 'novo') ordenar();
+      return;
+    }
     var b = e.target.closest ? e.target.closest('.mem') : null; if (!b) return;
     var c = b.closest('.cartao'), i = Number(b.getAttribute('data-i'));
     c._sel = c._sel === i ? null : i;

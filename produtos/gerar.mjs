@@ -26,6 +26,15 @@ const dataBr = dados.atualizadoEm.split('-').reverse().join('/');
 // Foto oficial do fabricante em produtos/fotos/<modelo>.webp (iPhone: loja da Apple; Xiaomi/Poco: mi.com). Sem foto, sem imagem.
 const FOTOS = new Set(fs.readdirSync(path.join(raiz, 'produtos', 'fotos')).filter((f) => f.endsWith('.webp')).map((f) => f.replace(/.webp$/, '')));
 const foto = (modelo) => { const s = slug(modelo); return FOTOS.has(s) ? `/produtos/fotos/${s}.webp` : null; };
+// Bolinha de cada cor (tom aproximado; o nome vai junto). Cor sem tom conhecido fica cinza com o nome. "Única" não aparece.
+const TONS = {
+  preto: '#2b2b2d', branco: '#f4f4f0', silver: '#e3e4e6', prata: '#e3e4e6', azul: '#4a6a8f', laranja: '#f07a32', bordo: '#6b2335',
+  glacial: '#d9e6ee', 'night sky': '#22304d', verde: '#9fbf9a', gold: '#ead7b5', dourado: '#d8b877', lilas: '#c8b6e2',
+  vermelho: '#c8102e', rosa: '#f3c7d0', roxo: '#7d5ca8', natural: '#c4bdb2', desert: '#c9a98a', cinza: '#8e8e93', grafite: '#4a4a4f',
+};
+const tom = (cor) => TONS[slug(cor).replace(/-/g, ' ')] || '#c7c7cc';
+const semCor = (cor) => /^(única|unica|-)$/i.test(cor.trim());
+const coresDe = (it) => it.precoCor || Object.fromEntries((it.cores || []).map((c) => [c, it.preco]));
 
 function precoBloco(o) {
   return `<div class="valor" data-condicao="${o.condicao}" data-preco="${o.preco}">
@@ -58,8 +67,14 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     const g = grupos.get(chave); const vk = [it.memoria, it.ram || ''].join('|');
     if (!g.variantes.has(vk)) g.variantes.set(vk, { mem: it.memoria, ram: it.ram || '', pronta: false });
     const v = g.variantes.get(vk); const ja = v[it.condicao];
-    const novo = { preco: it.preco, aPartir: Boolean(it.aPartir), grade: it.grade || '' };
-    v[it.condicao] = !ja ? novo : { ...(it.preco < ja.preco ? novo : ja), preco: Math.min(it.preco, ja.preco), aPartir: true };
+    // c: cor → preço de venda; x: cores com mais de um preço (ex.: CPO e lacrado juntos), que mostram "a partir de".
+    const novo = { preco: it.preco, aPartir: Boolean(it.aPartir), grade: it.grade || '', c: coresDe(it), x: [] };
+    if (!ja) v[it.condicao] = novo;
+    else {
+      const c = { ...ja.c }; const x = [...ja.x];
+      for (const [cor, p] of Object.entries(novo.c)) { if (c[cor] != null && !x.includes(cor)) x.push(cor); c[cor] = c[cor] == null ? p : Math.min(c[cor], p); }
+      v[it.condicao] = { ...(it.preco < ja.preco ? novo : ja), preco: Math.min(it.preco, ja.preco), aPartir: true, c, x };
+    }
     if (it.pronta) v.pronta = true;
   }
   const ordemMarca = (m) => (m === 'Apple' ? 0 : 1);
@@ -77,10 +92,12 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     const menor = Math.min(...ofertas.map((o) => o.preco));
     const pronta = g.variantes.some((v) => v.pronta);
     const dadosVar = g.variantes.map((v) => ({ m: v.mem, r: v.ram, l: v.lacrado || null, s: v.seminovo || null, p: v.pronta ? 1 : 0 }));
+    // Todas as cores do modelo num cartão só (pedido do Gabriel: "sem precisar de um item na lista para cada").
+    const cores = [...new Set(g.variantes.flatMap((v) => ['lacrado', 'seminovo'].flatMap((k) => (v[k] ? Object.keys(v[k].c) : []))))].filter((c) => !semCor(c));
     return `
       <article class="cartao" id="${slug(`${g.marca} ${g.modelo}`)}" data-marca="${esc(g.marca)}" data-modelo="${esc(g.modelo)}"
         data-geracao="${geracao(g.modelo)}" data-menor="${menor}" data-pronta="${pronta ? 1 : 0}"
-        data-busca="${esc(`${g.marca} ${g.modelo} ${g.variantes.map((v) => v.mem).join(' ')}`.toLowerCase())}" data-variantes="${esc(JSON.stringify(dadosVar))}">
+        data-busca="${esc(`${g.marca} ${g.modelo} ${g.variantes.map((v) => v.mem).join(' ')} ${cores.join(' ')}`.toLowerCase())}" data-variantes="${esc(JSON.stringify(dadosVar))}">
         ${foto(g.modelo) ? `<img class="foto" src="${foto(g.modelo)}" alt="${esc(g.modelo)}" width="240" height="240" loading="lazy" decoding="async">` : ''}
         ${pronta ? '<span class="pronta">Pronta entrega</span>' : ''}
         ${mostrarMarca ? `<span class="marca">${esc(g.marca)}</span>` : ''}
@@ -89,6 +106,10 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
           ${g.variantes.map((v, i) => `<button type="button" class="mem" data-i="${i}" aria-pressed="false">${esc(v.rotulo)}</button>`).join('')}
         </div>
         <p class="ram" hidden></p>
+        ${cores.length ? `<div class="cores" role="group" aria-label="Cor do ${esc(g.modelo)}">
+          <span class="bolas">${cores.map((c) => `<button type="button" class="cor" data-cor="${esc(c)}" aria-pressed="false" title="${esc(c)}" aria-label="${esc(c)}" style="--tom:${tom(c)}"></button>`).join('')}</span>
+          <span class="cor-nome">${cores.length === 1 ? esc(cores[0]) : `${cores.length} cores`}</span>
+        </div>` : ''}
         <div class="valores n${ofertas.length}">
           ${ofertas.map(precoBloco).join('\n          ')}
         </div>
@@ -197,6 +218,12 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   .mem:hover { border-color: var(--texto-3); }
   .mem[aria-pressed="true"] { border-color: var(--azul-botao); box-shadow: 0 0 0 1px var(--azul-botao); font-weight: 600; }
   .ram { margin: -8px 0 12px; font-size: 13px; color: var(--texto-2); }
+  .cores { display: flex; align-items: center; gap: 6px; margin: -10px 0 10px; min-height: 30px; }
+  .bolas { display: flex; flex-wrap: wrap; }
+  .cor { position: relative; width: 28px; height: 28px; border: 0; padding: 0; background: transparent; border-radius: 50%; cursor: pointer; }
+  .cor::before { content: ""; position: absolute; inset: 5px; border-radius: 50%; background: var(--tom); box-shadow: inset 0 0 0 1px rgba(0,0,0,.2); }
+  .cor[aria-pressed="true"]::after { content: ""; position: absolute; inset: 1px; border-radius: 50%; box-shadow: 0 0 0 2px var(--azul-botao); }
+  .cor-nome { font-size: 12px; color: var(--texto-2); }
   .valores { display: grid; gap: 14px; padding: 14px 0 16px; border-top: 1px solid #e8e8ed; }
   .valores.n2 { grid-template-columns: 1fr 1fr; }
   .valores.n3 { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
@@ -280,7 +307,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   <div class="largura">
     <div><h2>Até 18x no cartão</h2><p>À vista no Pix ou em 12x com parcela de um décimo do valor. Também parcelo em até 18x.</p></div>
     ${temSeminovo ? `<div><h2>Seminovos revisados</h2><p>Bateria em torno de ${dados.bateriaSeminovo}%. A letra ao lado é a nota de conservação: A+ é a melhor.</p></div>` : ''}
-    <div><h2>Compra pelo WhatsApp</h2><p>Toque em Comprar, escolha a cor e combine a entrega comigo.</p></div>
+    <div><h2>Compra pelo WhatsApp</h2><p>Escolha a memória e a cor no cartão, toque em Comprar e combine a entrega comigo.</p></div>
   </div>
 </section>
 <footer class="rodape"><div class="largura">Valores enquanto durarem os estoques e sujeitos a alteração. As marcas citadas pertencem aos seus donos; esta página não é de nenhum fabricante.</div></footer>
@@ -296,20 +323,37 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
   var brl = function (v) { return Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
   var NOMES = { lacrado: 'Novo', seminovo: 'Seminovo' };
   var ZAP = "https://wa.me/${dados.whatsapp}?text=";
-  cartoes.forEach(function (c) { c._var = JSON.parse(c.getAttribute('data-variantes')); c._sel = null; });
+  cartoes.forEach(function (c) { c._var = JSON.parse(c.getAttribute('data-variantes')); c._sel = null; c._cor = null; });
   // Preços do cartão: a memória escolhida no cartão, senão a do filtro de cima, senão todas ("a partir de").
   function montar(c) {
     var vs = c._var, escolhida = c._sel !== null ? [vs[c._sel]] : memoria.value ? vs.filter(function (v) { return v.m === memoria.value; }) : vs;
+    var chaves = ['lacrado', 'seminovo'].filter(function (k) { return !estado.condicao || estado.condicao === k; });
+    var campo = function (k) { return k === 'lacrado' ? 'l' : 's'; };
+    // Cores que existem na memória e no estado escolhidos; a cor escolhida que não existe ali deixa de valer.
+    var tem = {};
+    escolhida.forEach(function (v) { chaves.forEach(function (k) { var o = v[campo(k)]; if (o) Object.keys(o.c || {}).forEach(function (x) { tem[x] = 1; }); }); });
+    if (c._cor && !tem[c._cor]) c._cor = null;
+    var cor = c._cor;
+    var preco = function (o) { return cor ? o.c[cor] : o.preco; };
     var blocos = [];
-    ['lacrado', 'seminovo'].forEach(function (k) {
-      if (estado.condicao && estado.condicao !== k) return;
-      var ops = escolhida.map(function (v) { return v[k === 'lacrado' ? 'l' : 's']; }).filter(Boolean);
+    chaves.forEach(function (k) {
+      var ops = escolhida.map(function (v) { return v[campo(k)]; }).filter(function (o) { return o && (!cor || (o.c && o.c[cor] != null)); });
       if (!ops.length) return;
-      var m = ops.reduce(function (a, b) { return b.preco < a.preco ? b : a; });
+      var m = ops.reduce(function (a, b) { return preco(b) < preco(a) ? b : a; });
       var notas = ops.map(function (o) { return o.grade; }).filter(function (g, i, a) { return g && a.indexOf(g) === i; });
-      var aPartir = ops.length > 1 || ops.some(function (o) { return o.aPartir; });
-      blocos.push({ k: k, preco: m.preco, nota: notas.length === 1 ? notas[0] : '', aPartir: aPartir });
+      var aPartir = ops.length > 1 || ops.some(function (o) { return cor ? (o.x || []).indexOf(cor) >= 0 : o.aPartir; });
+      blocos.push({ k: k, preco: preco(m), nota: notas.length === 1 ? notas[0] : '', aPartir: aPartir });
     });
+    var nome = c.querySelector('.cor-nome');
+    if (nome) {
+      var vis = [];
+      c.querySelectorAll('.cor').forEach(function (b) {
+        var x = b.getAttribute('data-cor'); b.hidden = !tem[x]; if (tem[x]) vis.push(x);
+        b.setAttribute('aria-pressed', String(x === cor));
+      });
+      c.querySelector('.cores').hidden = vis.length === 0;
+      nome.textContent = cor || (vis.length === 1 ? vis[0] : vis.length + ' cores');
+    }
     c.querySelector('.valores').className = 'valores n' + blocos.length;
     c.querySelector('.valores').innerHTML = blocos.map(function (b) {
       return '<div class="valor" data-condicao="' + b.k + '" data-preco="' + b.preco + '"><span class="estado">' + NOMES[b.k]
@@ -320,7 +364,7 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     var uma = escolhida.length === 1 ? escolhida[0] : null;
     var ram = c.querySelector('.ram'); ram.hidden = !(uma && uma.r); if (uma && uma.r) ram.textContent = uma.r + ' de RAM';
     c.querySelectorAll('.mem').forEach(function (b, i) { b.setAttribute('aria-pressed', String(c._sel === i || (c._sel === null && !!uma && vs[i] === uma && !!memoria.value))); });
-    c.querySelector('.comprar').href = ZAP + encodeURIComponent('Oi, Gabriel! Vi no site e quero saber do ' + c.getAttribute('data-modelo') + (uma ? ' ' + uma.m + (uma.r ? ' (' + uma.r + ' RAM)' : '') : '') + '.');
+    c.querySelector('.comprar').href = ZAP + encodeURIComponent('Oi, Gabriel! Vi no site e quero saber do ' + c.getAttribute('data-modelo') + (uma ? ' ' + uma.m + (uma.r ? ' (' + uma.r + ' RAM)' : '') : '') + (cor ? ' na cor ' + cor : '') + '.');
     return blocos.length > 0;
   }
   function aplicar() {
@@ -354,6 +398,13 @@ function pagina({ caminho, itens, titulo, h1, sub, descricao, mostrarMarca }) {
     });
   });
   grade.addEventListener('click', function (e) {
+    var bc = e.target.closest ? e.target.closest('.cor') : null;
+    if (bc) {
+      var cc = bc.closest('.cartao'), x = bc.getAttribute('data-cor');
+      cc._cor = cc._cor === x ? null : x;
+      montar(cc); if (ordem.value !== 'novo') ordenar();
+      return;
+    }
     var b = e.target.closest ? e.target.closest('.mem') : null; if (!b) return;
     var c = b.closest('.cartao'), i = Number(b.getAttribute('data-i'));
     c._sel = c._sel === i ? null : i;

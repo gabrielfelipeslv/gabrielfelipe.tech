@@ -17,6 +17,10 @@
     "Preto",
     "Silver"
    ],
+   "precoCor": {
+    "Preto": 3738.9,
+    "Silver": 3738.9
+   },
    "pronta": false
   },
   {
@@ -31,6 +35,10 @@
     "Branco",
     "Preto"
    ],
+   "precoCor": {
+    "Branco": 4398.9,
+    "Preto": 4398.9
+   },
    "pronta": false
   },
   {
@@ -45,6 +53,10 @@
     "Azul",
     "Preto"
    ],
+   "precoCor": {
+    "Azul": 4343.9,
+    "Preto": 4343.9
+   },
    "pronta": false
   },
   {
@@ -59,6 +71,10 @@
     "Azul",
     "Preto"
    ],
+   "precoCor": {
+    "Azul": 4508.9,
+    "Preto": 4508.9
+   },
    "pronta": false
   },
   {
@@ -72,6 +88,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 4684.9
+   },
    "pronta": false
   },
   {
@@ -86,6 +105,10 @@
     "Branco",
     "Preto"
    ],
+   "precoCor": {
+    "Branco": 5049,
+    "Preto": 5049
+   },
    "pronta": false
   },
   {
@@ -101,6 +124,11 @@
     "Branco",
     "Preto"
    ],
+   "precoCor": {
+    "Azul": 5993.9,
+    "Branco": 6059.9,
+    "Preto": 6059.9
+   },
    "pronta": false
   },
   {
@@ -114,6 +142,9 @@
    "cores": [
     "Laranja"
    ],
+   "precoCor": {
+    "Laranja": 7643.9
+   },
    "pronta": false
   },
   {
@@ -129,6 +160,11 @@
     "Azul",
     "Silver"
    ],
+   "precoCor": {
+    "Laranja": 8525,
+    "Azul": 8569,
+    "Silver": 8855
+   },
    "pronta": false
   },
   {
@@ -143,6 +179,10 @@
     "Azul",
     "Silver"
    ],
+   "precoCor": {
+    "Azul": 9955,
+    "Silver": 9955
+   },
    "pronta": false
   },
   {
@@ -158,6 +198,11 @@
     "Preto",
     "Glacial"
    ],
+   "precoCor": {
+    "Bordô": 9339,
+    "Preto": 9339,
+    "Glacial": 9339
+   },
    "pronta": false
   },
   {
@@ -175,6 +220,13 @@
     "Bordô",
     "Silver"
    ],
+   "precoCor": {
+    "Azul": 9889,
+    "Preto": 9845,
+    "Glacial": 9889,
+    "Bordô": 10109,
+    "Silver": 10109
+   },
    "pronta": false
   },
   {
@@ -189,6 +241,10 @@
     "Bordô",
     "Glacial"
    ],
+   "precoCor": {
+    "Bordô": 11825,
+    "Glacial": 11825
+   },
    "pronta": false
   },
   {
@@ -202,6 +258,9 @@
    "cores": [
     "Glacial"
    ],
+   "precoCor": {
+    "Glacial": 18150
+   },
    "pronta": false
   },
   {
@@ -215,6 +274,9 @@
    "cores": [
     "Night Sky"
    ],
+   "precoCor": {
+    "Night Sky": 15950
+   },
    "pronta": false
   },
   {
@@ -229,6 +291,10 @@
     "Preto",
     "Verde"
    ],
+   "precoCor": {
+    "Preto": 1428.9,
+    "Verde": 1428.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -245,6 +311,11 @@
     "Verde",
     "Preto"
    ],
+   "precoCor": {
+    "Gold": 1593.9,
+    "Verde": 1593.9,
+    "Preto": 1593.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -260,6 +331,10 @@
     "Lilás",
     "Vermelho"
    ],
+   "precoCor": {
+    "Lilás": 1527.9,
+    "Vermelho": 1527.9
+   },
    "pronta": false,
    "grade": "A-"
   },
@@ -274,6 +349,9 @@
    "cores": [
     "Azul"
    ],
+   "precoCor": {
+    "Azul": 2187.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -290,6 +368,11 @@
     "Branco",
     "Gold"
    ],
+   "precoCor": {
+    "Azul": 2308.9,
+    "Branco": 2308.9,
+    "Gold": 2308.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -304,6 +387,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 2528.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -322,6 +408,13 @@
     "Branco",
     "Rosa"
    ],
+   "precoCor": {
+    "Azul": 1945.9,
+    "Preto": 1945.9,
+    "Vermelho": 1945.9,
+    "Branco": 1945.9,
+    "Rosa": 1945.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -338,6 +431,11 @@
     "Preto",
     "Vermelho"
    ],
+   "precoCor": {
+    "Azul": 2165.9,
+    "Preto": 2165.9,
+    "Vermelho": 2165.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -352,6 +450,9 @@
    "cores": [
     "Silver"
    ],
+   "precoCor": {
+    "Silver": 2605.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -366,6 +467,9 @@
    "cores": [
     "Azul"
    ],
+   "precoCor": {
+    "Azul": 2638.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -380,6 +484,9 @@
    "cores": [
     "Azul"
    ],
+   "precoCor": {
+    "Azul": 2968.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -396,6 +503,11 @@
     "Azul",
     "Verde"
    ],
+   "precoCor": {
+    "Preto": 2935.9,
+    "Azul": 2935.9,
+    "Verde": 2935.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -410,6 +522,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 3408.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -427,6 +542,12 @@
     "Vermelho",
     "Preto"
    ],
+   "precoCor": {
+    "Lilás": 2198.9,
+    "Azul": 2198.9,
+    "Vermelho": 2198.9,
+    "Preto": 2198.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -441,6 +562,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 2418.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -457,6 +581,11 @@
     "Lilás",
     "Azul"
    ],
+   "precoCor": {
+    "Preto": 2418.9,
+    "Lilás": 2418.9,
+    "Azul": 2418.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -472,6 +601,10 @@
     "Roxo",
     "Preto"
    ],
+   "precoCor": {
+    "Roxo": 3023.9,
+    "Preto": 3023.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -487,6 +620,10 @@
     "Preto",
     "Roxo"
    ],
+   "precoCor": {
+    "Preto": 3243.9,
+    "Roxo": 3243.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -502,6 +639,10 @@
     "Preto",
     "Roxo"
    ],
+   "precoCor": {
+    "Preto": 3441.9,
+    "Roxo": 3441.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -517,6 +658,10 @@
     "Roxo",
     "Gold"
    ],
+   "precoCor": {
+    "Roxo": 3463.9,
+    "Gold": 3463.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -531,6 +676,9 @@
    "cores": [
     "Roxo"
    ],
+   "precoCor": {
+    "Roxo": 3661.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -545,6 +693,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 3870.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -562,6 +713,12 @@
     "Preto",
     "Azul"
    ],
+   "precoCor": {
+    "Rosa": 2803.9,
+    "Verde": 2803.9,
+    "Preto": 2803.9,
+    "Azul": 2803.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -576,6 +733,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 3078.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -591,6 +751,10 @@
     "Azul",
     "Preto"
    ],
+   "precoCor": {
+    "Azul": 3683.9,
+    "Preto": 3683.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -606,6 +770,10 @@
     "Silver",
     "Preto"
    ],
+   "precoCor": {
+    "Silver": 3848.9,
+    "Preto": 3848.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -622,6 +790,11 @@
     "Preto",
     "Natural"
    ],
+   "precoCor": {
+    "Azul": 4398.9,
+    "Preto": 4398.9,
+    "Natural": 4398.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -637,6 +810,10 @@
     "Azul",
     "Preto"
    ],
+   "precoCor": {
+    "Azul": 4585.9,
+    "Preto": 4585.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -651,6 +828,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 4805.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -667,6 +847,11 @@
     "Verde",
     "Preto"
    ],
+   "precoCor": {
+    "Azul": 3848.9,
+    "Verde": 3848.9,
+    "Preto": 3848.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -681,6 +866,9 @@
    "cores": [
     "Azul"
    ],
+   "precoCor": {
+    "Azul": 4134.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -696,6 +884,10 @@
     "Preto",
     "Desert"
    ],
+   "precoCor": {
+    "Preto": 4563.9,
+    "Desert": 4563.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -711,6 +903,10 @@
     "Preto",
     "Natural"
    ],
+   "precoCor": {
+    "Preto": 4838.9,
+    "Natural": 4838.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -725,6 +921,9 @@
    "cores": [
     "Natural"
    ],
+   "precoCor": {
+    "Natural": 5388.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -739,6 +938,9 @@
    "cores": [
     "Silver"
    ],
+   "precoCor": {
+    "Silver": 7588.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -753,6 +955,9 @@
    "cores": [
     "Laranja"
    ],
+   "precoCor": {
+    "Laranja": 7093.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -767,6 +972,9 @@
    "cores": [
     "Azul"
    ],
+   "precoCor": {
+    "Azul": 8237.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -781,6 +989,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 9458.9
+   },
    "pronta": false,
    "grade": "A+"
   },
@@ -796,6 +1007,10 @@
     "Preto",
     "Roxo"
    ],
+   "precoCor": {
+    "Preto": 4068.9,
+    "Roxo": 4068.9
+   },
    "pronta": false,
    "grade": "A"
   },
@@ -810,6 +1025,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 874.5
+   },
    "pronta": false,
    "ram": "4 GB"
   },
@@ -824,6 +1042,9 @@
    "cores": [
     "Dourado"
    ],
+   "precoCor": {
+    "Dourado": 1248.5
+   },
    "pronta": false,
    "ram": "4 GB"
   },
@@ -839,6 +1060,10 @@
     "Preto",
     "Azul"
    ],
+   "precoCor": {
+    "Preto": 1072.5,
+    "Azul": 1072.5
+   },
    "pronta": false,
    "ram": "4 GB"
   },
@@ -854,6 +1079,10 @@
     "Preto",
     "Azul"
    ],
+   "precoCor": {
+    "Preto": 1298,
+    "Azul": 1298
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -870,6 +1099,11 @@
     "Azul",
     "Lilás"
    ],
+   "precoCor": {
+    "Preto": 1276,
+    "Azul": 1276,
+    "Lilás": 1276
+   },
    "pronta": false,
    "ram": "4 GB"
   },
@@ -885,6 +1119,10 @@
     "Preto",
     "Azul"
    ],
+   "precoCor": {
+    "Preto": 1639,
+    "Azul": 1639
+   },
    "pronta": false,
    "ram": "6 GB"
   },
@@ -900,6 +1138,10 @@
     "Preto",
     "Azul"
    ],
+   "precoCor": {
+    "Preto": 1683,
+    "Azul": 1683
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -916,6 +1158,11 @@
     "Azul",
     "Verde"
    ],
+   "precoCor": {
+    "Preto": 1782,
+    "Azul": 1782,
+    "Verde": 1782
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -930,6 +1177,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 2442
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -944,6 +1194,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 2398
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -959,6 +1212,10 @@
     "Preto",
     "Branco"
    ],
+   "precoCor": {
+    "Preto": 3168,
+    "Branco": 3168
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -973,6 +1230,9 @@
    "cores": [
     "Azul"
    ],
+   "precoCor": {
+    "Azul": 2805
+   },
    "pronta": false,
    "ram": "12 GB"
   },
@@ -989,6 +1249,11 @@
     "Verde",
     "Lilás"
    ],
+   "precoCor": {
+    "Preto": 1133,
+    "Verde": 1133,
+    "Lilás": 1133
+   },
    "pronta": false,
    "ram": "6 GB"
   },
@@ -1003,6 +1268,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 1397
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -1018,6 +1286,10 @@
     "Preto",
     "Silver"
    ],
+   "precoCor": {
+    "Preto": 1485,
+    "Silver": 1485
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -1032,6 +1304,9 @@
    "cores": [
     "Silver"
    ],
+   "precoCor": {
+    "Silver": 1914
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -1046,6 +1321,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 2178
+   },
    "pronta": false,
    "ram": "8 GB"
   },
@@ -1061,6 +1339,10 @@
     "Preto",
     "Branco"
    ],
+   "precoCor": {
+    "Preto": 3465,
+    "Branco": 3465
+   },
    "pronta": false,
    "ram": "12 GB"
   },
@@ -1075,6 +1357,9 @@
    "cores": [
     "Preto"
    ],
+   "precoCor": {
+    "Preto": 3894
+   },
    "pronta": false,
    "ram": "12 GB"
   },
@@ -1090,6 +1375,10 @@
     "Preto",
     "Azul"
    ],
+   "precoCor": {
+    "Preto": 1248.5,
+    "Azul": 1248.5
+   },
    "pronta": false,
    "ram": "4 GB"
   }
