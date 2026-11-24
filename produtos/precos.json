@@ -924,6 +924,222 @@
    "grade": "A+"
   },
   {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 12",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 1527.9,
+   "aPartir": false,
+   "cores": [
+    "Lilás",
+    "Vermelho"
+   ],
+   "precoCor": {
+    "Lilás": 1527.9,
+    "Vermelho": 1527.9
+   },
+   "pronta": false,
+   "grade": "A-"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 12 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 2187.9,
+   "aPartir": false,
+   "cores": [
+    "Azul"
+   ],
+   "precoCor": {
+    "Azul": 2187.9
+   },
+   "pronta": false,
+   "grade": "A"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 12 Pro Max",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 2308.9,
+   "aPartir": false,
+   "cores": [
+    "Azul",
+    "Branco",
+    "Gold"
+   ],
+   "precoCor": {
+    "Azul": 2308.9,
+    "Branco": 2308.9,
+    "Gold": 2308.9
+   },
+   "pronta": false,
+   "grade": "A"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 13 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 2605.9,
+   "aPartir": false,
+   "cores": [
+    "Silver"
+   ],
+   "precoCor": {
+    "Silver": 2605.9
+   },
+   "pronta": false,
+   "grade": "A"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 13 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 2638.9,
+   "aPartir": false,
+   "cores": [
+    "Azul"
+   ],
+   "precoCor": {
+    "Azul": 2638.9
+   },
+   "pronta": false,
+   "grade": "A"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 13 Pro",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "preco": 2968.9,
+   "aPartir": false,
+   "cores": [
+    "Azul"
+   ],
+   "precoCor": {
+    "Azul": 2968.9
+   },
+   "pronta": false,
+   "grade": "A"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 14 Pro",
+   "memoria": "128 GB",
+   "condicao": "seminovo",
+   "preco": 3023.9,
+   "aPartir": false,
+   "cores": [
+    "Roxo",
+    "Preto"
+   ],
+   "precoCor": {
+    "Roxo": 3023.9,
+    "Preto": 3023.9
+   },
+   "pronta": false,
+   "grade": "A"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 14 Pro",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "preco": 3441.9,
+   "aPartir": false,
+   "cores": [
+    "Preto",
+    "Roxo"
+   ],
+   "precoCor": {
+    "Preto": 3441.9,
+    "Roxo": 3441.9
+   },
+   "pronta": false,
+   "grade": "A"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 15 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 3848.9,
+   "aPartir": false,
+   "cores": [
+    "Silver",
+    "Preto"
+   ],
+   "precoCor": {
+    "Silver": 3848.9,
+    "Preto": 3848.9
+   },
+   "pronta": false,
+   "grade": "A"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 17 Pro",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 7588.9,
+   "aPartir": false,
+   "cores": [
+    "Silver"
+   ],
+   "precoCor": {
+    "Silver": 7588.9
+   },
+   "pronta": false,
+   "grade": "A+"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 17 Pro Max",
+   "memoria": "512 GB",
+   "condicao": "seminovo",
+   "preco": 8237.9,
+   "aPartir": false,
+   "cores": [
+    "Azul"
+   ],
+   "precoCor": {
+    "Azul": 8237.9
+   },
+   "pronta": false,
+   "grade": "A+"
+  },
+  {
+   "marca": "Apple",
+   "categoria": "celular",
+   "modelo": "iPhone 18 Pro Max",
+   "memoria": "256 GB",
+   "condicao": "seminovo",
+   "preco": 9458.9,
+   "aPartir": false,
+   "cores": [
+    "Preto"
+   ],
+   "precoCor": {
+    "Preto": 9458.9
+   },
+   "pronta": false,
+   "grade": "A+"
+  },
+  {
    "marca": "Xiaomi",
    "categoria": "celular",
    "modelo": "Poco C71",
